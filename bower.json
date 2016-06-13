@@ -1,0 +1,26 @@
+{
+  "name": "webapp",
+  "description": "",
+  "main": "",
+  "authors": [
+    "arbor <arbor@o2.pl>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/arborQ/GetInvlovedWeb",
+  "moduleType": [
+    "es6"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.2",
+    "font-awesome": "^4.6.1",
+    "roboto-fontface": "^0.4.5",
+    "mui": "^0.5.4"
+  }
+}

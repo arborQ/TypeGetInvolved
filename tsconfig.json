@@ -16,15 +16,16 @@
     "./typings/react/react.d.ts",
     "./typings/redux/redux.d.ts",
     "./typings/tsd.d.ts",
-    "./app/components/app.tsx",
-    "./app/components/counter_list.tsx",
-    "./app/components/counter.tsx",
-    "./app/index.tsx",
-    "./app/actions.ts",
-    "./app/reducers.ts"
+    "./frontend/components/app.tsx",
+    "./frontend/components/counter_list.tsx",
+    "./frontend/components/counter.tsx",
+    "./frontend/index.tsx",
+    "./frontend/actions.ts",
+    "./frontend/reducers.ts"
   ],
   "exclude": [
     "node_modules",
+    "backend",
     "config",
     "dev_server.js"
   ],

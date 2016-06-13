@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= title
+    if development
+      link(rel='stylesheet', href='/bower_components/mui/packages/cdn/css/mui.css')
+    else
+      link(rel="stylesheet", href="//cdn.muicss.com/mui-latest/css/mui.min.css", type="text/css")
+    link(href='//fonts.googleapis.com/css?family=Roboto+Mono:300', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/bundle.css')
+    link(rel="shortcut icon" href="/favicon.ico")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+  body
+    block content
+    if development
+      script(src="/bower_components/mui/packages/cdn/js/mui.js")
+    else
+      script(src="//cdn.muicss.com/mui-latest/js/mui.min.js")
+    script(src='//cdn.auth0.com/js/lock-9.1.min.js')
+    script(type="text/javascript", src="/app.bundle.js")
