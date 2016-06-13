@@ -8,8 +8,7 @@ var bodyParser = require('body-parser');
 var pages = require('./pages');
 
 var app = express();
-console.log('-->');
-console.log(path.join(__dirname, '../public'));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
