@@ -3,14 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build:webpack": "NODE_ENV=development webpack --config config/webpack.dev.js --watch",
-    "build": "npm run clean && npm run build:webpack",
-    "clean": "rimraf build",
     "run:dev": "nodemon --exec \"babel-node ./bin/www\"",
-    "mongo:dev": "mongod",
-    "build:dev": "webpack --config config/webpack.dev.js --color --watch",
-    "start:dev": "concurrent \"npm run build:dev\" \"npm run mongo:dev\" \"npm run run:dev\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev": "webpack --config config/webpack.dev.js --color",
+    "start:dev": "concurrent \"webpack --config config/webpack.dev.js --color --watch\" \"mongod\" \"gulp less-watch\" \"npm run run:dev\""
   },
   "dependencies": {
     "babel-cli": "^6.10.1",
@@ -37,6 +32,7 @@
     "nodemon": "^1.9.2",
     "react": "^0.15.1",
     "react-dom": "^0.15.1",
+    "react-router": "^2.4.1",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.2",
     "redbox-react": "^1.2.2",
@@ -52,6 +48,11 @@
     "webpack-hot-middleware": "^2.6.4"
   },
   "devDependencies": {
-    "concurrently": "^2.1.0"
+    "concurrently": "^2.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-less": "^3.1.0"
   }
 }

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "jsx": "preserve",
+    "noEmit": true,
     "experimentalDecorators": true
   },
   "filesGlob": [
@@ -11,16 +12,22 @@
     "!./node_modules/**/*.ts"
   ],
   "files": [
+    "./typings/history/history.d.ts",
     "./typings/react-redux/react-redux.d.ts",
+    "./typings/react-router/history.d.ts",
+    "./typings/react-router/react-router.d.ts",
     "./typings/react/react-dom.d.ts",
     "./typings/react/react.d.ts",
     "./typings/redux/redux.d.ts",
     "./typings/tsd.d.ts",
     "./frontend/components/app.tsx",
-    "./frontend/components/counter_list.tsx",
-    "./frontend/components/counter.tsx",
+    "./frontend/components/common/baseComponent.tsx",
+    "./frontend/components/login/index.tsx",
+    "./frontend/components/user-interface/masterContainer.tsx",
+    "./frontend/components/user-interface/topNavigation.tsx",
     "./frontend/index.tsx",
     "./frontend/actions.ts",
+    "./frontend/components/common/index.ts",
     "./frontend/reducers.ts"
   ],
   "exclude": [

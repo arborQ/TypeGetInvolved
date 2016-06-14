@@ -1,20 +1,15 @@
 import * as React from 'react';
+import { Router, Route, browserHistory } from 'react-router';
+import MasterComponent from './user-interface/masterContainer';
+import LoginPage from './login/index';
 
-import { incrementCounter, decrementCounter, addCounter } from '../actions';
-import { CounterList } from './counter_list';
-
-interface IAppState {
-    counters: number[];
-}
-
-interface IAppProps {
-    dispatch?: (func: any) => void;
-    counters?: number[];
-}
-
-
-export class App extends React.Component<IAppProps, IAppState> {
+export class App extends React.Component<{}, {}> {
     public render(): React.ReactElement<{}> {
-        return (<div>Counter</div>);
+        return (
+            <Router history={browserHistory}>
+                <Route path='/' component={MasterComponent} >
+                    <Route path='/login' component={LoginPage} />
+                </Route>
+            </Router>);
     }
 }

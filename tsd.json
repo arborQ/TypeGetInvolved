@@ -1,21 +1,30 @@
 {
-  "version": "v4",
-  "repo": "borisyankov/DefinitelyTyped",
-  "ref": "master",
-  "path": "typings",
-  "bundle": "typings/tsd.d.ts",
-  "installed": {
+	"version": "v4",
+	"repo": "borisyankov/DefinitelyTyped",
+	"ref": "master",
+	"path": "typings",
+	"bundle": "typings/tsd.d.ts",
+	"installed": {
 		"react-redux/react-redux.d.ts": {
-		  "commit": "ba424f7ee39717d51c17699a09ac8df312a7e9a1"
+			"commit": "ba424f7ee39717d51c17699a09ac8df312a7e9a1"
 		},
 		"react/react-dom.d.ts": {
-		  "commit": "ba424f7ee39717d51c17699a09ac8df312a7e9a1"
+			"commit": "ba424f7ee39717d51c17699a09ac8df312a7e9a1"
 		},
 		"redux/redux.d.ts": {
-		  "commit": "ba424f7ee39717d51c17699a09ac8df312a7e9a1"
+			"commit": "ba424f7ee39717d51c17699a09ac8df312a7e9a1"
 		},
 		"react/react.d.ts": {
-		  "commit": "ba424f7ee39717d51c17699a09ac8df312a7e9a1"
+			"commit": "ba424f7ee39717d51c17699a09ac8df312a7e9a1"
+		},
+		"react-router/react-router.d.ts": {
+			"commit": "f481e77dfca5a146db1b4f5f20f15929b30c8729"
+		},
+		"history/history.d.ts": {
+			"commit": "f481e77dfca5a146db1b4f5f20f15929b30c8729"
+		},
+		"react-router/history.d.ts": {
+			"commit": "f481e77dfca5a146db1b4f5f20f15929b30c8729"
 		}
 	}
 }

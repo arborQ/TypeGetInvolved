@@ -2,7 +2,9 @@ var webpack = require('webpack');
 var path = require('path');
 
 var APP_DIR = path.join(__dirname, '..', 'frontend');
-
+var tsconfig = require('../tsconfig.json');
+var tsOptions = tsconfig.compilerOptions;
+tsOptions.noEmit = false;
 module.exports = {
   debug: true,
   devtool: 'eval',
@@ -22,7 +24,6 @@ module.exports = {
     }]
   },
   output: {
-
     filename: '../public/[name].bundle.js',
     path: __dirname
   },
@@ -34,5 +35,10 @@ module.exports = {
     root: [path.resolve('../frontend')],
     extensions: ['', '.jsx', '.js', '.tsx', '.ts'],
     alias : {}
+  },
+  ts : {
+    compilerOptions : {
+      "noEmit": false,
+    }
   }
 };
