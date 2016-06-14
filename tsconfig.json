@@ -12,6 +12,7 @@
     "!./node_modules/**/*.ts"
   ],
   "files": [
+    "./frontend/components/user-interface/ui/involved-ui.d.ts",
     "./typings/history/history.d.ts",
     "./typings/react-redux/react-redux.d.ts",
     "./typings/react-router/history.d.ts",
@@ -25,9 +26,13 @@
     "./frontend/components/login/index.tsx",
     "./frontend/components/user-interface/masterContainer.tsx",
     "./frontend/components/user-interface/topNavigation.tsx",
+    "./frontend/components/user-interface/ui/material-design/input.tsx",
+    "./frontend/components/user-interface/ui/material-design/paper.tsx",
     "./frontend/index.tsx",
     "./frontend/actions.ts",
     "./frontend/components/common/index.ts",
+    "./frontend/components/user-interface/ui/index.ts",
+    "./frontend/components/user-interface/ui/material-design/index.ts",
     "./frontend/reducers.ts"
   ],
   "exclude": [
