@@ -1,7 +1,11 @@
-declare namespace InvolvedUi {
-  var Input : React.ReactElement<P>
-}
+import { Component } from 'react';
+declare namespace __involvedUi {
+    type StringNumeric = string | number;
 
-declare module "involved-ui" {
-    export = InvolvedUi;
+    interface IInputProps {
+        className: string;
+        value: StringNumeric;
+    }
+
+    var Input: Component<IInputProps, any>
 }

@@ -6,6 +6,6 @@ export default class PaperElementComponent extends React.Component<{ childs: any
             <div className="mui-panel" {...this.props}>
                 {this.props.children}
             </div>
-          );
+        );
     }
 }

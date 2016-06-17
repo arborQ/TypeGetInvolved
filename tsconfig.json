@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "jsx": "preserve",
-    "noEmit": true,
+    "noEmit": false,
     "experimentalDecorators": true
   },
   "filesGlob": [
@@ -33,6 +33,7 @@
     "./frontend/components/common/index.ts",
     "./frontend/components/user-interface/ui/index.ts",
     "./frontend/components/user-interface/ui/material-design/index.ts",
+    "./frontend/components/user-interface/ui/test.ts",
     "./frontend/reducers.ts"
   ],
   "exclude": [
