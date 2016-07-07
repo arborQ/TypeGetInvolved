@@ -12,11 +12,11 @@ module.exports = {
     'app' : './frontend/index.tsx'
   },
   module: {
-    // preLoaders: [{
-    //   test: /\.tsx?$/,
-    //   loader: 'tslint',
-    //   include: APP_DIR
-    // }],
+    preLoaders: [{
+      test: /\.tsx?$/,
+      loader: 'tslint',
+      include: APP_DIR
+    }],
     loaders: [{
       test: /\.tsx?$/,
       loaders: ['babel', 'ts'],
@@ -34,7 +34,10 @@ module.exports = {
   resolve: {
     root: [path.resolve('../frontend')],
     extensions: ['', '.jsx', '.js', '.tsx', '.ts'],
-    alias : {}
+    alias : {
+      "ui" : path.resolve('./frontend/ui/user-interface'),
+      "ui-view" : path.resolve('./frontend/ui/material-design')
+    }
   },
   ts : {
     compilerOptions : {
