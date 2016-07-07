@@ -14,6 +14,7 @@
   "files": [
     "./frontend/ui/ui.d.ts",
     "./frontend/ui/user-interface/input/input.d.ts",
+    "./frontend/ui/user-interface/mainMenu/mainMenu.d.ts",
     "./frontend/ui/user-interface/panel/panel.d.ts",
     "./typings/history/history.d.ts",
     "./typings/index.d.ts",
@@ -28,6 +29,7 @@
     "./frontend/ui/material-design/input/index.tsx",
     "./frontend/ui/material-design/panel/index.tsx",
     "./frontend/ui/user-interface/input/index.tsx",
+    "./frontend/ui/user-interface/mainMenu/index.tsx",
     "./frontend/ui/user-interface/panel/index.tsx",
     "./frontend/ui/material-design/index.ts",
     "./frontend/ui/user-interface/index.ts"

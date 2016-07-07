@@ -31,7 +31,8 @@ node_modules
 jspm_packages
 public
 typings
-
+config/*.hot-update.json
+config/*.hot-update.js
 # Optional npm cache directory
 .npm
 
