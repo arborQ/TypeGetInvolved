@@ -12,11 +12,11 @@ module.exports = {
     'app' : './frontend/index.tsx'
   },
   module: {
-    preLoaders: [{
-      test: /\.tsx?$/,
-      loader: 'tslint',
-      include: APP_DIR
-    }],
+    // preLoaders: [{
+    //   test: /\.tsx?$/,
+    //   loader: 'tslint',
+    //   include: APP_DIR
+    // }],
     loaders: [{
       test: /\.tsx?$/,
       loaders: ['babel', 'ts'],

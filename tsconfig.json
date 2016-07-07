@@ -12,8 +12,8 @@
     "!./node_modules/**/*.ts"
   ],
   "files": [
-    "./frontend/components/user-interface/ui/involved-ui.d.ts",
     "./typings/history/history.d.ts",
+    "./typings/index.d.ts",
     "./typings/react-redux/react-redux.d.ts",
     "./typings/react-router/history.d.ts",
     "./typings/react-router/react-router.d.ts",
@@ -21,20 +21,7 @@
     "./typings/react/react.d.ts",
     "./typings/redux/redux.d.ts",
     "./typings/tsd.d.ts",
-    "./frontend/components/app.tsx",
-    "./frontend/components/common/baseComponent.tsx",
-    "./frontend/components/login/index.tsx",
-    "./frontend/components/user-interface/masterContainer.tsx",
-    "./frontend/components/user-interface/topNavigation.tsx",
-    "./frontend/components/user-interface/ui/material-design/input.tsx",
-    "./frontend/components/user-interface/ui/material-design/paper.tsx",
-    "./frontend/index.tsx",
-    "./frontend/actions.ts",
-    "./frontend/components/common/index.ts",
-    "./frontend/components/user-interface/ui/index.ts",
-    "./frontend/components/user-interface/ui/material-design/index.ts",
-    "./frontend/components/user-interface/ui/test.ts",
-    "./frontend/reducers.ts"
+    "./frontend/index.tsx"
   ],
   "exclude": [
     "node_modules",

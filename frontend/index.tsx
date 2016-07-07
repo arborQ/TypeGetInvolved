@@ -1,35 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { Store, createStore } from 'redux';
-import { Provider } from 'react-redux';
+import * as dom from 'react-dom';
 
-import { App } from './components/app';
-import { counterApp } from './reducers';
-
-declare const require: (name: String) => any;
-
-interface IHotModule {
-    hot?: { accept: (path: string, callback: () => void) => void };
-};
-
-declare const module: IHotModule;
-
-function configureStore(): Store {
-    const store: Store = createStore(counterApp);
-
-    if (module.hot) {
-        module.hot.accept('./reducers', () => {
-            const nextRootReducer: any = require('./reducers').counterApp;
-            store.replaceReducer(nextRootReducer);
-        });
-    }
-
-    return store;
-}
-
-const store: Store = configureStore();
-
-ReactDOM.render((
-    <Provider store={store}>
-        <App />
-    </Provider>), document.getElementById('app'));
+dom.render( <div>TS Start?</div> , document.getElementById('app') );
