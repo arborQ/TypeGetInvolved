@@ -47,11 +47,13 @@ export default class AsideComponent extends React.Component<{ children?: any, is
         let sideNavContainerStyle = Object.assign({}, sideNavContainer, (this.state.isOpen ? visiblesideNavContainer : {}));
 
         return (
+          <div style={ {'position' : 'relative', 'zIndex' : 10 } }>
             <aside style={sideNavStyle}>
                 <nav style={sideNavContainerStyle}>
                     {this.props.children}
                 </nav>
             </aside>
+          </div>
         );
     }
 }

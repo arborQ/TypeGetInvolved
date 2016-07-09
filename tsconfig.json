@@ -17,7 +17,6 @@
     "./frontend/ui/user-interface/mainMenu/mainMenu.d.ts",
     "./frontend/ui/user-interface/panel/panel.d.ts",
     "./typings/history/history.d.ts",
-    "./typings/index.d.ts",
     "./typings/react-redux/react-redux.d.ts",
     "./typings/react-router/history.d.ts",
     "./typings/react-router/react-router.d.ts",

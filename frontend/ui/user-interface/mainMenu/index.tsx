@@ -2,8 +2,8 @@ import * as React from 'react';
 import Asside from './aside';
 
 let menuContainerStyle = {
-    left: 5,
-    top: 5,
+    bottom: 5,
+    right: 5,
     position: 'absolute',
 };
 
