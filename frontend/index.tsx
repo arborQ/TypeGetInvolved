@@ -1,14 +1,20 @@
 import * as React from 'react';
 import * as dom from 'react-dom';
+import { Router, Route, Link, browserHistory } from 'react-router'
 
-import { InputContainer, PanelContainer, MainMenuContainer } from 'ui';
+import MasterPage from './components/master';
+import NoMatch from './components/noMatch';
+
+import { LoginPage } from './components/authorize';
 
 dom.render(
     (
         <div style={{ margin: '0 auto', width: '800px' }}>
-            <MainMenuContainer menuItems={['dsadas', 'dsa3', 'dsa4', 'dsa5', 'dsa6', 'dsa7', 'dsa8', 'dsa9', 'dsa66', 'dsa45', 'dsa66', 'dsa654']} />
-            <PanelContainer>
-                <InputContainer value={'test'} />
-            </PanelContainer>
+            <Router history={browserHistory}>
+                <Route path="/" component={MasterPage}>
+                    <Route path="login" component={LoginPage} />
+                    <Route path="*" component={NoMatch}/>
+                </Route>
+            </Router>
         </div>
     ), document.getElementById('app'));

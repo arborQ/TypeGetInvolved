@@ -4,11 +4,11 @@ import * as React from 'react';
 
 
 export default class AsideComponent extends React.Component<{ children?: any, isOpen: boolean }, { isOpen: boolean }> {
-    public componentWillMount() {
+    public componentWillMount() : void {
         this.state = { isOpen: this.props.isOpen };
     }
 
-    public componentWillReceiveProps(nextProps: { isOpen: boolean }) {
+    public componentWillReceiveProps(nextProps: { isOpen: boolean }) : void {
         this.setState(Object.assign({}, this.state, { isOpen: nextProps.isOpen }));
     }
 
@@ -47,13 +47,13 @@ export default class AsideComponent extends React.Component<{ children?: any, is
         let sideNavContainerStyle = Object.assign({}, sideNavContainer, (this.state.isOpen ? visiblesideNavContainer : {}));
 
         return (
-          <div style={ {'position' : 'relative', 'zIndex' : 10 } }>
-            <aside style={sideNavStyle}>
-                <nav style={sideNavContainerStyle}>
-                    {this.props.children}
-                </nav>
-            </aside>
-          </div>
+            <div style={ { 'position': 'relative', 'zIndex': 10 } }>
+                <aside style={sideNavStyle}>
+                    <nav style={sideNavContainerStyle}>
+                        {this.props.children}
+                    </nav>
+                </aside>
+            </div>
         );
     }
 }
