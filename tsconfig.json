@@ -12,6 +12,7 @@
     "!./node_modules/**/*.ts"
   ],
   "files": [
+    "./frontend/ui/material-design/mainMenu/mainMenu.d.ts",
     "./frontend/ui/ui.d.ts",
     "./frontend/ui/user-interface/input/input.d.ts",
     "./frontend/ui/user-interface/mainMenu/mainMenu.d.ts",
@@ -30,6 +31,8 @@
     "./frontend/components/noMatch/index.tsx",
     "./frontend/index.tsx",
     "./frontend/ui/material-design/input/index.tsx",
+    "./frontend/ui/material-design/mainMenu/aside.tsx",
+    "./frontend/ui/material-design/mainMenu/index.tsx",
     "./frontend/ui/material-design/panel/index.tsx",
     "./frontend/ui/user-interface/input/index.tsx",
     "./frontend/ui/user-interface/mainMenu/aside.tsx",

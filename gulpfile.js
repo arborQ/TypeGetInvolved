@@ -3,9 +3,10 @@ var gulpLess = require('gulp-less');
 var concatCss = require('gulp-concat-css');
 var cleanCSS = require('gulp-clean-css');
 var autoprefixer = require('gulp-autoprefixer');
+var uiPath = 'frontEnd/ui/material-design/**/*.less';
 
 gulp.task('less', function(){
-  gulp.src('frontEnd/components/**/*.less')
+  gulp.src(uiPath)
   .pipe(gulpLess())
   .pipe(autoprefixer({
             browsers: ['last 2 versions'],
@@ -17,5 +18,5 @@ gulp.task('less', function(){
 });
 
 gulp.task('less-watch', [ 'less' ], function(){
-  gulp.watch('sources/frontEnd/**/*.less', [ 'less' ] );
+  gulp.watch(uiPath, [ 'less' ] );
 });
