@@ -9,19 +9,17 @@
     "./**/*.d.ts",
     "./**/*.tsx",
     "./**/*.ts",
-    "!./node_modules/**/*.ts"
+    "!./node_modules/**/*.ts",
+    "./typings/react-toolbox/react-toolbox.d.ts"
   ],
   "files": [
-    "./frontend/ui/material-design/mainMenu/mainMenu.d.ts",
+    "./frontend/ui/layout/layout.d.ts",
     "./frontend/ui/ui.d.ts",
-    "./frontend/ui/user-interface/input/input.d.ts",
-    "./frontend/ui/user-interface/mainMenu/mainMenu.d.ts",
-    "./frontend/ui/user-interface/panel/panel.d.ts",
     "./typings/history/history.d.ts",
-    "./typings/index.d.ts",
     "./typings/react-redux/react-redux.d.ts",
     "./typings/react-router/history.d.ts",
     "./typings/react-router/react-router.d.ts",
+    "./typings/react-toolbox/react-toolbox.d.ts",
     "./typings/react/react-dom.d.ts",
     "./typings/react/react.d.ts",
     "./typings/redux/redux.d.ts",
@@ -30,17 +28,7 @@
     "./frontend/components/master/index.tsx",
     "./frontend/components/noMatch/index.tsx",
     "./frontend/index.tsx",
-    "./frontend/ui/material-design/input/index.tsx",
-    "./frontend/ui/material-design/mainMenu/aside.tsx",
-    "./frontend/ui/material-design/mainMenu/index.tsx",
-    "./frontend/ui/material-design/panel/index.tsx",
-    "./frontend/ui/user-interface/input/index.tsx",
-    "./frontend/ui/user-interface/mainMenu/aside.tsx",
-    "./frontend/ui/user-interface/mainMenu/index.tsx",
-    "./frontend/ui/user-interface/panel/index.tsx",
-    "./frontend/components/authorize/index.ts",
-    "./frontend/ui/material-design/index.ts",
-    "./frontend/ui/user-interface/index.ts"
+    "./frontend/components/authorize/index.ts"
   ],
   "exclude": [
     "node_modules",

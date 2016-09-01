@@ -21,6 +21,11 @@ module.exports = {
       test: /\.tsx?$/,
       loaders: ['babel', 'ts'],
       include: APP_DIR
+    },
+    {
+      test: /\.jsx?$/,
+      loaders: ['babel'],
+      include: APP_DIR
     }]
   },
   output: {
@@ -32,11 +37,9 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   resolve: {
-    root: [path.resolve('../frontend')],
     extensions: ['', '.jsx', '.js', '.tsx', '.ts'],
     alias : {
-      "ui" : path.resolve('./frontend/ui/user-interface'),
-      "ui-view" : path.resolve('./frontend/ui/material-design')
+      "ui" : path.resolve('./frontend/ui')
     }
   },
   ts : {

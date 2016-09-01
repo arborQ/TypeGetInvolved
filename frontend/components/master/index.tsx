@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { PanelContainer, MainMenuContainer } from 'ui';
+import { Layout } from 'ui';
 
 export default class MasterPageComponent extends React.Component<{ children: any }, { /* state */ }> {
     public render(): React.ReactElement<{}> {
         return (
-          <PanelContainer>
-          <MainMenuContainer menuItems={['login']} />
-          <div>
-            {this.props.children}
-          </div>
-          </PanelContainer>
+            <div>
+                <Layout />
+                <div>{this.props.children}</div>
+            </div>
         );
     }
 }
