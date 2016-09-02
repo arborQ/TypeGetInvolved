@@ -9,7 +9,9 @@ declare module __ui {
 declare module "ui" {
     export = __ui;
 }
-
+declare var componentHandler: {
+  upgradeElement : (element : HTMLElement) => void;
+};
 declare module ui.common {
     interface IApplicationLink {
         Name: string;
