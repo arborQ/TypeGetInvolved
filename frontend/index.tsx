@@ -9,7 +9,7 @@ import { LoginPage } from './components/authorize';
 
 dom.render(
     (
-        <div style={{ margin: '0 auto', width: '800px' }}>
+        <div>
             <Router history={browserHistory}>
                 <Route path='/' component={MasterPage}>
                     <Route path='login' component={LoginPage} />

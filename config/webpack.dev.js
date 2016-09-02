@@ -26,7 +26,12 @@ module.exports = {
       test: /\.jsx?$/,
       loaders: ['babel'],
       include: APP_DIR
-    }]
+    },
+    {
+      test: /\.scss$/,
+      loaders: ["style", "css", "sass"]
+    }
+  ]
   },
   output: {
     filename: '../public/[name].bundle.js',
@@ -39,7 +44,8 @@ module.exports = {
   resolve: {
     extensions: ['', '.jsx', '.js', '.tsx', '.ts'],
     alias : {
-      "ui" : path.resolve('./frontend/ui')
+      "ui" : path.resolve('./frontend/ui'),
+      "mdl" : path.resolve('./public/bower_components/material-design-lite/src')
     }
   },
   ts : {

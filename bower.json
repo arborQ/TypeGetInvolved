@@ -21,6 +21,7 @@
     "bootstrap": "v4.0.0-alpha.2",
     "font-awesome": "^4.6.1",
     "roboto-fontface": "^0.4.5",
-    "mui": "^0.5.4"
+    "mui": "^0.5.4",
+    "material-design-lite": "^1.2.0"
   }
 }
