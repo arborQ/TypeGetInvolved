@@ -8,7 +8,7 @@ export default class LayoutComponent extends React.Component<ui.layout.IProps, a
         return (
             <div className='mdl-layout mdl-js-layout mdl-layout--fixed-drawer'>
                 <div className='mdl-layout__drawer'>
-                    <span className='mdl-layout-title'>Title</span>
+                    <span className='mdl-layout-title'>{this.props.Title || 'title'}</span>
                     <nav className='mdl-navigation'>
                         {links}
                     </nav>

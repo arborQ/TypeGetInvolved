@@ -7,7 +7,7 @@ export default class InputComponent extends React.Component<ui.input.IProps, any
                 className='mdl-textfield__input' 
                 type={this.props.Type || 'text'}
                 id={this.props.Name} 
-                autoFocus={this.props.Autofocus}
+                autoFocus={!!this.props.Autofocus}
                 onChange={(e) => { this.props.OnChange(e.target['value']); } } />
               <label 
                 className='mdl-textfield__label' 

@@ -9,7 +9,7 @@ export default class MasterPageComponent extends React.Component<{ children: any
         ];
         return (
             <div>
-                <Layout Links={links}>
+                <Layout Links={links} Title='ArborPage'>
                     <div>{this.props.children}</div>
                 </Layout>
             </div>
