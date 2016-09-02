@@ -1,7 +1,6 @@
 import * as React from 'react';
 export default class PanelComponent extends React.Component<ui.panel.IProps, any> {
     public render(): any {
-        console.log(this.props.Actions);
         return (
           <div className='mdl-card mdl-shadow--2dp' style={{'margin' : '0 auto'}}>
                 <div className='mdl-card__title'>

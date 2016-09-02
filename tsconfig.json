@@ -17,6 +17,7 @@
     "./frontend/ui/input/input.d.ts",
     "./frontend/ui/layout/layout.d.ts",
     "./frontend/ui/panel/panel.d.ts",
+    "./frontend/components/authorize/login/login.d.ts",
     "./frontend/ui/ui.d.ts",
     "./typings/history/history.d.ts",
     "./typings/react-redux/react-redux.d.ts",
