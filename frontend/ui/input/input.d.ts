@@ -10,6 +10,10 @@ declare module ui.input{
     ErrorText? : string | Array<string>;
   }
 
+  interface IState{
+    IsDirty : boolean;
+  }
+
   interface IComponent extends __React.Component<IProps, {}> {
 
   }

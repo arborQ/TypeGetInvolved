@@ -25,6 +25,9 @@
 		},
 		"react-router/history.d.ts": {
 			"commit": "f481e77dfca5a146db1b4f5f20f15929b30c8729"
+		},
+		"promise/promise.d.ts": {
+			"commit": "084e55916674ff7128722bf72150aa55acea08d9"
 		}
 	}
 }

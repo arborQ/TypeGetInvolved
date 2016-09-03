@@ -9,6 +9,7 @@
     "start:dev": "concurrent \"npm run build:dev\" \"mongod\" \"gulp less-watch\" \"npm run run:dev\""
   },
   "dependencies": {
+    "@types/es6-promise": "0.0.31",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.4.5",
     "babel-eslint": "^6.0.4",
@@ -34,10 +35,11 @@
     "nconf": "^0.8.4",
     "nodemon": "^1.9.2",
     "normalize.css": "^4.2.0",
-    "react": "^ 15.2.0",
+    "promise-ajax": "^0.1.0",
+    "react": "^15.3.1",
     "react-addons-css-transition-group": "^15.3.1",
     "react-addons-update": "^15.3.1",
-    "react-dom": "^ 15.2.0",
+    "react-dom": "^15.3.1",
     "react-router": "^2.4.1",
     "react-toolbox": "^1.1.2",
     "react-transform-catch-errors": "^1.0.2",

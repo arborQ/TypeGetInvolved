@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Input, Panel, Button, Form } from 'ui';
+import { post } from 'ajax';
 
 export default class LogInPageComponent extends React.Component<pages.login.IProps, pages.login.IState> {
     constructor(){
@@ -15,7 +16,7 @@ export default class LogInPageComponent extends React.Component<pages.login.IPro
     public render(): React.ReactElement<{}> {
         let actions = [<Button Text='Login' OnClick={() =>{ alert('click'); }} />];
         return (
-            <Form OnSubmit={() => { alert('submit'); }}>
+            <Form OnSubmit={() => post('api/authorize', { login : this.state.Login, password : this.state.Password })  }>
                 <Panel Title='Login to see more' Actions={[<Button key='login' Text='Login' Type={'submit'} />]}>
                     <Input
                       Autofocus={true}
