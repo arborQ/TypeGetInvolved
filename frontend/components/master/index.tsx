@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Layout } from 'ui';
-
+import DisplayMessage from './displayMessage';
 export default class MasterPageComponent extends React.Component<{ children: any }, { /* state */ }> {
     public render(): React.ReactElement<{}> {
         var links = [
@@ -11,6 +11,7 @@ export default class MasterPageComponent extends React.Component<{ children: any
             <div>
                 <Layout Links={links} Title='ArborPage'>
                     <div>{this.props.children}</div>
+                    <DisplayMessage />
                 </Layout>
             </div>
         );

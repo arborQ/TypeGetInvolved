@@ -5,6 +5,7 @@ declare module __ui {
     export var Panel: new () => ui.panel.IComponent
     export var Form: new () => ui.form.IComponent
     export var Button: new () => ui.button.IComponent
+    export var Message: new () => ui.message.IComponent
 }
 declare module "ui" {
     export = __ui;

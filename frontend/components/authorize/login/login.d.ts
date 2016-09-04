@@ -4,6 +4,7 @@ declare module pages.login{
   }
 
   interface IState{
+    IsAuthenticated : boolean;
     Login : string;
     Password : string;
   }
