@@ -48,7 +48,8 @@ module.exports = {
       "mdl" : path.resolve('./public/bower_components/material-design-lite/src'),
       "ajax" : path.resolve('./frontend/services/ajax'),
       "promises-service" : path.resolve('./frontend/services/promises'),
-      "application-store" : path.resolve('./frontend/flux')
+      "application-store" : path.resolve('./frontend/flux'),
+      "shared" : path.resolve('./frontend/components/shared')
     }
   },
   ts : {

@@ -13,6 +13,9 @@
   ],
   "files": [
     "./frontend/components/authorize/login/login.d.ts",
+    "./frontend/components/shared/component/baseComponent.ts",
+    "./frontend/components/shared/index.d.ts",
+    "./frontend/components/shared/index.ts",
     "./frontend/flux/application-store.d.ts",
     "./frontend/flux/reducers/authorize/reduce.authorize.d.ts",
     "./frontend/services/ajax/promise-ajax.d.ts",
