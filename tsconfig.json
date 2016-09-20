@@ -3,7 +3,8 @@
     "target": "ES6",
     "jsx": "preserve",
     "noEmit": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "noEmitHelpers" : true
   },
   "filesGlob": [
     "./**/*.d.ts",

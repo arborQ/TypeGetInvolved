@@ -55,6 +55,7 @@ module.exports = {
   ts : {
     compilerOptions : {
       "noEmit": false,
+      "noEmitHelpers" : true
     }
   }
 };

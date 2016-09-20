@@ -1,6 +1,10 @@
 import * as React from 'react';
 
 export default class baseComponent<P, S> extends React.Component<P, S>{
+
+  constructor(p : P, s: S){
+    super(p, s);
+  }
   protected IsMounted : boolean;
 
   public componentDidMount() : void {

@@ -3,7 +3,7 @@ import baseComponent from './baseComponent';
 
 export default class storeComponent<P, S> extends baseComponent<P, S>{
   constructor(protected Store : any){
-    super();
+    super(null, null);
   }
   private unsubscribeStore : () => void;
 
