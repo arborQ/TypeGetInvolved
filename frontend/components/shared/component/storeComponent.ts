@@ -1,19 +1,23 @@
 import * as React from 'react';
 import { store } from 'application-store';
 
-import baseComponent from './baseComponent';
+import BaseComponent from './baseComponent';
 
-export default class storeComponent<P, S> extends baseComponent<P, S>{
+export default class storeComponent<P, S> extends BaseComponent<P, S>{
 
   private unsubscribeStore : Function;
 
   public componentDidMount() : void {
     super.componentDidMount();
-      this.unsubscribeStore = store.subscribe(() => {
-        if(!!this.UpdateFromStore){
-            this.UpdateFromStore(store.getState());
-        }
-      });
+    let subscribeAction = () => {
+      if(!!this.UpdateFromStore){
+          var reducedData = this.StoreDataReduce(store.getState());
+          this.UpdateFromStore(reducedData);
+      }
+    };
+
+    this.unsubscribeStore = store.subscribe(subscribeAction);
+    subscribeAction();
   }
 
   public componentWillUnmount() : void {
@@ -25,8 +29,10 @@ export default class storeComponent<P, S> extends baseComponent<P, S>{
   }
   protected UpdateFromStore : (data : any) => void;
 
-  protected Dispatch(type : string, data : any) : void {
-    console.log({data});
+  protected StoreDataReduce(data : any) : any{
+    return data;
+  }
+  protected Dispatch(type : string, data? : any) : void {
     store.dispatch({ type, data });
   }
 }

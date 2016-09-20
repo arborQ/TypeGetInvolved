@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Layout } from 'ui';
 import { store } from 'application-store';
-import DisplayMessage from './displayMessage';
 export default class MasterPageComponent extends React.Component<{ children: any }, { IsAuthenticated : boolean }> {
     constructor(){
         super();
@@ -47,7 +46,6 @@ export default class MasterPageComponent extends React.Component<{ children: any
             <div>
                 <Layout Links={links} Title='ArborPage'>
                     <div>{this.props.children}</div>
-                    <DisplayMessage />
                 </Layout>
             </div>
         );

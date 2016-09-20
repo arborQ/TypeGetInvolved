@@ -9,17 +9,33 @@ export default class LogInPageComponent extends StoreComponent<pages.login.IProp
         this.state = { Login: '', Password: '', IsAuthenticated: false };
     }
 
+    public StoreDataReduce(data : any) : any {
+        var { userData } = data;
+        return userData;
+    }
+
     public UpdateFromStore(data : any) : void{
         var { IsAuthenticated } = data;
         this.UpdateState({ IsAuthenticated });
     }
 
+    private SubmitLoginForm() {
+        return post('api/authorize', { 
+            login: this.state.Login, 
+            password: this.state.Password 
+        }).then((data) => { 
+            if(data.isAuthenticated){
+                this.Dispatch('authorize.success');
+            }
+        });
+    }
+
     public render(): React.ReactElement<{}> {
         if (this.state.IsAuthenticated) {
-            return <div>no no :)</div>
+            return <Panel Title='Already logged in' Actions={[<Button key='logout' Text='Logout' OnClick={() => this.Dispatch('authorize.logout')} />]}></Panel>
         }
         return (
-            <Form OnSubmit= {() => post('api/authorize', { login: this.state.Login, password: this.state.Password }).then((data) => { this.Dispatch('authorize.success', { token: data.token })})}>
+            <Form OnSubmit={this.SubmitLoginForm.bind(this)}>
                 <Panel Title='Login to see more' Actions={[<Button key='login' Text='Login' Type={'submit'} />]}>
                     <Input
                         Autofocus={true}

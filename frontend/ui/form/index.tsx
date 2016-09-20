@@ -1,8 +1,10 @@
 import * as React from 'react';
 import Loading from '../loading';
+import { DefaultComponent } from 'shared';
+
 import { handlePromise, timeoutPromise, ignoreFail } from 'promises-service';
 
-export default class FormComponent extends React.Component<ui.form.IProps, ui.form.IState> {
+export default class FormComponent extends DefaultComponent<ui.form.IProps, ui.form.IState> {
     constructor(){
       super();
       this.state = { IsLoading : false };
@@ -21,12 +23,12 @@ export default class FormComponent extends React.Component<ui.form.IProps, ui.fo
     }
     private startLoading() : Promise<any> {
       return timeoutPromise(50).then(() => {
-        this.setState(Object.assign({} , this.state, { IsLoading : true } ));
+        this.UpdateState({ IsLoading : true });
       });
     }
 
     private stopLoading() : void {
-      this.setState(Object.assign({} , this.state, { IsLoading : false } ));
+        this.UpdateState({ IsLoading : false });
     }
     private submitForm(e : Event) : void {
       e.preventDefault();
