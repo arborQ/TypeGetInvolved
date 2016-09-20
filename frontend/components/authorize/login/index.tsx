@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Input, Panel, Button, Form } from 'ui';
 import { post } from 'ajax';
-import { store } from 'application-store';
 import { StoreComponent } from 'shared';
 
 export default class LogInPageComponent extends StoreComponent<pages.login.IProps, pages.login.IState> {
     constructor() {
-        super(store);
+        super();
         this.state = { Login: '', Password: '', IsAuthenticated: false };
     }
 
@@ -20,7 +19,7 @@ export default class LogInPageComponent extends StoreComponent<pages.login.IProp
             return <div>no no :)</div>
         }
         return (
-            <Form OnSubmit= {() => post('api/authorize', { login: this.state.Login, password: this.state.Password }).then((data) => { store.dispatch({ type: 'authorize.success', token: data.token }); })}>
+            <Form OnSubmit= {() => post('api/authorize', { login: this.state.Login, password: this.state.Password }).then((data) => { this.Dispatch('authorize.success', { token: data.token })})}>
                 <Panel Title='Login to see more' Actions={[<Button key='login' Text='Login' Type={'submit'} />]}>
                     <Input
                         Autofocus={true}

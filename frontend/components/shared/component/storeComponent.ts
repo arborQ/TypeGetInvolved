@@ -1,17 +1,17 @@
 import * as React from 'react';
+import { store } from 'application-store';
+
 import baseComponent from './baseComponent';
 
 export default class storeComponent<P, S> extends baseComponent<P, S>{
-  constructor(protected Store : any){
-    super(null, null);
-  }
-  private unsubscribeStore : () => void;
+
+  private unsubscribeStore : Function;
 
   public componentDidMount() : void {
     super.componentDidMount();
-      this.unsubscribeStore = this.Store.subscribe(() => {
+      this.unsubscribeStore = store.subscribe(() => {
         if(!!this.UpdateFromStore){
-            this.UpdateFromStore(this.Store.getState());
+            this.UpdateFromStore(store.getState());
         }
       });
   }
@@ -24,4 +24,9 @@ export default class storeComponent<P, S> extends baseComponent<P, S>{
     }
   }
   protected UpdateFromStore : (data : any) => void;
+
+  protected Dispatch(type : string, data : any) : void {
+    console.log({data});
+    store.dispatch({ type, data });
+  }
 }

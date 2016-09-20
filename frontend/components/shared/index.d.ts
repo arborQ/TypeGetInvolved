@@ -8,6 +8,7 @@ declare module __shared{
 
   export class StoreComponent<P, S> extends DefaultComponent<P, S>{ 
     UpdateFromStore(data : any) : void;
+    Dispatch(actionName : string, data : any) : void;
   }
 }
 
