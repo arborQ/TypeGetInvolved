@@ -14,7 +14,8 @@ api
 
     if(login === 'arbor' && password === 'arbor'){
       var token = jwt.sign({ isAuthenticated : true, login : 'arbor', email : 'arbor@o2.pl', roles : [ 'admin' ] }, secret);
-      res.send({ isAuthenticated : true, token });
+      res.cookie('jwt-token', token, { expire : new Date() + 9999 });
+      res.send({ isAuthenticated : true });
     }else{
       res.send({ isAuthenticated : false, message : "Unknown login or password" });
     }

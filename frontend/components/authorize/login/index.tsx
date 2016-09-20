@@ -34,7 +34,7 @@ export default class LogInPageComponent extends React.Component<pages.login.IPro
             return <div>no no :)</div>
         }
         return (
-            <Form OnSubmit= {() => post('api/authorize', { login: this.state.Login, password: this.state.Password }).then((data) => { store.dispatch({ type: 'authorize.success', token: data.token }); })}>
+            <Form OnSubmit= {() => post('api/authorize', { login: this.state.Login, password: this.state.Password }).then((data) => { store.dispatch({ type: 'authorize.success' }); })}>
                 <Panel Title='Login to see more' Actions={[<Button key='login' Text='Login' Type={'submit'} />]}>
                     <Input
                         Autofocus={true}

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 // import 'mdl/layout/_layout.cscc'
 export default class LayoutComponent extends React.Component<ui.layout.IProps, any> {
     public render(): any {
-        let links = (this.props.Links || []).map(l => <Link key={l.Route} className='mdl-navigation__link' to={l.Route} >{l.Name}</Link>);
+        let links = (this.props.Links || []).map(l => <Link onClick={(e : React.MouseEvent) => { if(!!l.OnClick){ l.OnClick(e); } }} key={l.Route} className='mdl-navigation__link' to={l.Route} >{l.Name}</Link>);
         return (
             <div className='mdl-layout mdl-js-layout mdl-layout--fixed-drawer'>
                 <div className='mdl-layout__drawer'>
