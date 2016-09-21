@@ -3,15 +3,15 @@ import { store } from 'application-store';
 
 import BaseComponent from './baseComponent';
 
-export default class storeComponent<P, S> extends BaseComponent<P, S>{
+export default class StoreComponent<P, S> extends BaseComponent<P, S> {
+  protected UpdateFromStore: (data: any) => void;
+  private unsubscribeStore: Function;
 
-  private unsubscribeStore : Function;
-
-  public componentDidMount() : void {
+  public componentDidMount(): void {
     super.componentDidMount();
-    let subscribeAction = () => {
-      if(!!this.UpdateFromStore){
-          var reducedData = this.StoreDataReduce(store.getState());
+    let subscribeAction: Function = () => {
+      if (!!this.UpdateFromStore) {
+          let reducedData: any = this.StoreDataReduce(store.getState());
           this.UpdateFromStore(reducedData);
       }
     };
@@ -20,19 +20,18 @@ export default class storeComponent<P, S> extends BaseComponent<P, S>{
     subscribeAction();
   }
 
-  public componentWillUnmount() : void {
+  public componentWillUnmount(): void {
     super.componentWillUnmount();
-    if(!!this.unsubscribeStore){
+    if (!!this.unsubscribeStore) {
       this.unsubscribeStore();
       this.unsubscribeStore = null;
     }
   }
-  protected UpdateFromStore : (data : any) => void;
 
-  protected StoreDataReduce(data : any) : any{
+  protected StoreDataReduce(data: any): any {
     return data;
   }
-  protected Dispatch(type : string, data? : any) : void {
+  protected Dispatch(type: string, data?: any): void {
     store.dispatch({ type, data });
   }
 }
