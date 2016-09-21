@@ -1,11 +1,4 @@
-function getCookie(name : string) : string {
-  var value = "; " + document.cookie;
-  var parts = value.split("; " + name + "=");
-  if (parts.length == 2) {
-    return parts.pop().split(";").shift();
-  }
-}
-
+import { getCookie } from './cookies';
 export default function() : flux.reducers.authorize.IState {
     var token = getCookie('jwt-token');
     if(!!token){
