@@ -1,23 +1,20 @@
 import * as React from 'react';
 
-export default class baseComponent<P, S> extends React.Component<P, S>{
+export default class BaseComponent<P, S> extends React.Component<P, S> {
 
-  constructor(p : P, s: S){
-    super(p, s);
-  }
-  protected IsMounted : boolean;
+  protected IsMounted: boolean;
 
-  public componentDidMount() : void {
+  public componentDidMount(): void {
     this.IsMounted = true;
   }
 
-  public componentWillUnmount() : void {
+  public componentWillUnmount(): void {
     this.IsMounted = false;
   }
 
-  protected UpdateState(chunkState : any) : void {
-    if(this.IsMounted){
-      let newState = Object.assign({} , this.state, chunkState);
+  protected UpdateState(chunkState: any): void {
+    if (this.IsMounted) {
+      let newState: any = Object.assign({} , this.state, chunkState);
       this.setState(newState);
     }
   }

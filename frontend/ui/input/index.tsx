@@ -1,14 +1,15 @@
 import * as React from 'react';
+
 export default class InputComponent extends React.Component<ui.input.IProps, ui.input.IState> {
-  public componentWillMount(){
+  public componentWillMount(): void {
     this.state = { IsDirty : false };
   }
   public render(): any {
-    var containerClasses = ['mdl-textfield', 'mdl-js-textfield', 'mdl-textfield--floating-label'];
-    if(this.state.IsDirty){
+    let containerClasses: string[] = ['mdl-textfield', 'mdl-js-textfield', 'mdl-textfield--floating-label'];
+    if (this.state.IsDirty) {
       containerClasses = [...containerClasses, 'is-dirty'];
     }
-    if(!!this.props.ErrorText){
+    if (!!this.props.ErrorText) {
       containerClasses = [...containerClasses, 'is-invalid'];
     }
     return (
@@ -23,16 +24,16 @@ export default class InputComponent extends React.Component<ui.input.IProps, ui.
               <label
                 className='mdl-textfield__label'
                 htmlFor={this.props.Name}>{this.props.Text}</label>
-              <span className="mdl-textfield__error">{this.props.ErrorText}</span>
+              <span className='mdl-textfield__error'>{this.props.ErrorText}</span>
           </div>
     );
   }
-  private updateTextValue(event){
+  private updateTextValue(event: React.KeyboardEvent): void {
     this.setState(Object.assign({}, this.state, { IsDirty : true }));
     this.props.OnChange(event.target['value']);
   }
-  private registerUi(element : HTMLElement){
-    if(!!element){
+  private registerUi(element: HTMLElement): void {
+    if (!!element) {
       componentHandler.upgradeElement(element);
     }
   }

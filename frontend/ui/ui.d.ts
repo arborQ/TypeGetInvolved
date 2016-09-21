@@ -18,5 +18,6 @@ declare module ui.common {
         Name: string;
         Route: string;
         Parameters?: any;
+        OnClick? : (e : __React.MouseEvent) => void;
     }
 }
