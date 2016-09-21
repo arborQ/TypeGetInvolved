@@ -10,7 +10,7 @@ export default class MessageComponent extends React.Component<ui.message.IProps,
         );
     }
 
-    private showMessage(element: HTMLElement) : void {
+    private showMessage(element: HTMLElement): void {
         // var data = {
         //     message: this.props.Text, timeout: 10000
         // };
