@@ -25,6 +25,12 @@ export default class GridComponent extends DefaultComponent<ui.grid.IProps, ui.g
                                 {this.renderRows(this.props.Columns, this.props.Data)}
                             </tbody>
                     </table>
+                    <div style={{ 'padding': '10px' }}>
+                        <span className='mdl-chip'>
+                                <span className='mdl-chip__text'> {`Elements: ${this.props.Data.length}`} </span>
+                        </span>
+
+                    </div>
                 </div>
             </div>
         );
