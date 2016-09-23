@@ -22,13 +22,13 @@ export default class LogInPageComponent extends StoreComponent<pages.login.IProp
     public render(): React.ReactElement<{}> {
         if (this.state.IsAuthenticated) {
             return <Panel Title='Already logged in' Actions={[
-                <Button key='logout' Text='Logout' OnClick={() => this.Dispatch('authorize.logout')} />,
+                <Button key='logout' Text='Logout' OnClick={() => this.Dispatch('authorize.logout')} DisplayType='raised' />,
                 ]}>
                 </Panel>;
         }
         return (
             <Form OnSubmit={this.SubmitLoginForm.bind(this)}>
-                <Panel Title='Login to see more' Actions={[<Button key='login' Text='Login' Type={'submit'} />]}>
+                <Panel Title='Login to see more' Actions={[<Button key='login' Text='Login' Type={'submit'} DisplayType='raised' />]}>
                     <Input
                         Autofocus={true}
                         Name='Login'

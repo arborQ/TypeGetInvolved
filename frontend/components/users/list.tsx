@@ -11,10 +11,12 @@ export default class LogInPageComponent extends StoreComponent<pages.users.list.
         ];
 
         return (
-            <Grid Columns={columns} Data={[
-                { email: 'arbor@o2.pl',  userName: 'arbor' },
-                { email: 'arbor@o2.pl', id: 1, userName: 'arbor' },
-                ]} />
+            <div style={{ 'width': '90%', 'max-width': '800px', 'margin': '0 auto' }}>
+                <Grid Columns={columns} Data={[
+                    { email: 'arbor@o2.pl', userName: 'arbor' },
+                    { email: 'arbor@o2.pl', id: 1, userName: 'arbor' },
+                    ]} />
+            </div>
         );
     }
 }
