@@ -6,6 +6,7 @@ import MasterPage from './components/master';
 import NoMatch from './components/noMatch';
 
 import { LoginPage } from './components/authorize';
+import UsersRouteData from './components/users';
 
 dom.render(
     (
@@ -13,6 +14,7 @@ dom.render(
             <Router history={browserHistory}>
                 <Route path='/' component={MasterPage}>
                     <Route path='login' component={LoginPage} />
+                    { UsersRouteData }
                     <Route path='*' component={NoMatch}/>
                 </Route>
             </Router>
