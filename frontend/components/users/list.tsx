@@ -15,7 +15,7 @@ export default class UserListPageComponent extends StoreComponent<pages.users.li
                 <Grid Columns={columns} Data={[
                     { email: 'arbor@o2.pl', userName: 'arbor' },
                     { email: 'arbor@o2.pl', id: 1, userName: 'arbor' },
-                    ]} />
+                    ]} Actions={[<Button Text='Add' key='add' OnClick={() => { this.props.history.push('/Users/Details'); }}  />]} />
                 {this.props.children}
             </div>
         );

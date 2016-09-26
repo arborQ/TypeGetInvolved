@@ -7,7 +7,7 @@ export default class DialogComponent extends React.Component<ui.panel.IProps, an
         let actions = this.props.Actions || [ ];
         actions = [<Button key='cancel' Text='Cancel' OnClick={() => { this.dialogElement.close(); }} />, ...actions];
         return (
-          <dialog className='mdl-dialog'
+          <dialog open={false} className='mdl-dialog'
             style={{ 'maxWidth': '400px', 'width': 'auto' }}
             ref={ this.registerDialog.bind(this) }>
                 <div className='mdl-dialog__title'>{this.props.Title}</div>
@@ -18,9 +18,10 @@ export default class DialogComponent extends React.Component<ui.panel.IProps, an
             </dialog>
         );
     }
-    private registerDialog(element: any): void {
+    private registerDialog(element: HTMLElement): void {
         this.dialogElement = element;
         if (this.dialogElement) {
+            componentHandler.upgradeElement(element);
             this.dialogElement.showModal();
         }
     };

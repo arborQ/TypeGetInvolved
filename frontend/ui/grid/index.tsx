@@ -8,9 +8,7 @@ export default class GridComponent extends DefaultComponent<ui.grid.IProps, ui.g
             <div>
                 <div className='mdl-shadow--2dp'>
                     <div style={{ 'padding': '10px' }}>
-                        <Button Text='Add' key='add' />
-                        <Button Text='Remove' key='remove' />
-                        <Button Text='Edit' key='edit' />
+                        {this.props.Actions || []}
                     </div>
                     <table
                     style={{ 'width': '100%', 'border': 'none' }}

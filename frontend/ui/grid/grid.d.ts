@@ -2,7 +2,8 @@ declare module ui.grid {
     type GridData = any & { id : string };
     interface IProps extends __React.Props<{}> {
         Columns: IGridColumn[],
-        Data: GridData[]
+        Data: GridData[],
+        Actions?: JSX.Element[]
     }
 
     interface IState {
