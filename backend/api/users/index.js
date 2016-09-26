@@ -1,0 +1,31 @@
+import express from 'express';
+import hashGenerator from 'password-hash';
+
+import { User } from '../../database/models';
+
+var router = express.Router();
+var api = router.route('/users');
+
+api
+  .get((req, res) => { 
+    var items = User.find(
+    (err, users) => {
+      res.send(users.map(u => { return { login: u.login, email: u.email, firstName: u.firstName, lastName: u.lastName, id: u._id } }))
+    });
+   })
+  .post((req, res, next) => {
+    let  { login, firstName, lastName, email } = req.body;
+    let newUser = new User({
+      login,
+      firstName,
+      lastName,
+      email,
+      passwordHash : hashGenerator.generate('haslo123!')
+    });
+
+    newUser.save((err) => {
+      res.send({ success : !err });
+    });
+  });
+
+module.exports = router;

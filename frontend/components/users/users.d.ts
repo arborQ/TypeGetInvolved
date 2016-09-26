@@ -7,3 +7,16 @@ declare module pages.users.list{
 
     }
 }
+
+declare module pages.users.details{
+    interface IProps extends ReactRouter.RouteComponentProps<any, any>{
+
+    }
+
+    interface IState{
+        email: string;
+        login: string;
+        firstName: string;
+        lastName: string;
+    }
+}
