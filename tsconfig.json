@@ -30,6 +30,7 @@
     "./frontend/ui/message/message.d.ts",
     "./frontend/ui/panel/panel.d.ts",
     "./frontend/ui/grid/grid.d.ts",
+    "./frontend/ui/dialog/dialog.d.ts",
     "./frontend/ui/ui.d.ts",
     "./typings/history/history.d.ts",
     "./typings/react-redux/react-redux.d.ts",
