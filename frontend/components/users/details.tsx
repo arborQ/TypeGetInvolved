@@ -44,8 +44,12 @@ export default class UserDetailsPageComponent extends StoreComponent<pages.users
         this.UpdateState({ UserData: newUserData });
     }
 
+    private cloase(): void {
+        this.props.history.push('/Users');
+    }
+
     private submitForm(): Promise<any> {
         let { UserData } = this.state;
-        return post('api/users', UserData);
+        return post('api/users', UserData).then(this.cloase.bind(this));
     }
 }
