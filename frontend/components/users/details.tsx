@@ -6,39 +6,46 @@ import { StoreComponent } from 'shared';
 export default class UserDetailsPageComponent extends StoreComponent<pages.users.details.IProps, pages.users.details.IState> {
     constructor() {
         super();
-        this.state = { email: '', firstName: '', lastName: '', login: '' };
+        this.state = { UserData : { email: '', firstName: '', lastName: '', login: '' } };
     }
     public render(): any {
+        let { UserData } = this.state;
         return (
             <Form OnSubmit={this.submitForm.bind(this)}>
                 <Dialog Title='Add user' Actions={ [<Button key='save' Text='Save' Type='submit' />] }>
                     <Input
                     Text='Login'
-                    Value={this.state.login}
-                    OnChange={(login) => { this.UpdateState({login}); }}
+                    Value={UserData.login}
+                    OnChange={(login) => { this.updateUserData({login}); }}
                     Name='Login' />
                     <Input
                     Text='Email'
-                    Value={this.state.email}
-                    OnChange={(email) => { this.UpdateState({email}); }}
+                    Value={UserData.email}
+                    OnChange={(email) => { this.updateUserData({email}); }}
                     Name='Email'
                     Type='email' />
                     <Input
                     Text='FirstName'
-                    Value={this.state.firstName}
-                    OnChange={(firstName) => { this.UpdateState({firstName}); }}
+                    Value={UserData.firstName}
+                    OnChange={(firstName) => { this.updateUserData({firstName}); }}
                     Name='FirstName' />
                     <Input
                     Text='LastName'
-                    Value={this.state.lastName}
-                    OnChange={(lastName) => { this.UpdateState({lastName}); }}
+                    Value={UserData.lastName}
+                    OnChange={(lastName) => { this.updateUserData({lastName}); }}
                     Name='LastName' />
                 </Dialog>
             </Form>
         );
     }
+    private updateUserData(userChunk: any): void {
+        let { UserData } = this.state;
+        let newUserData = Object.assign({}, UserData, userChunk);
+        this.UpdateState({ UserData: newUserData });
+    }
 
     private submitForm(): Promise<any> {
-        return post('api/users', this.state);
+        let { UserData } = this.state;
+        return post('api/users', UserData);
     }
 }

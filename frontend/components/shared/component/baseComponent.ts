@@ -16,6 +16,8 @@ export default class BaseComponent<P, S> extends React.Component<P, S> {
     if (this.IsMounted) {
       let newState: any = Object.assign({} , this.state, chunkState);
       this.setState(newState);
+    }else{
+      console.log('not mounted');
     }
   }
 }
