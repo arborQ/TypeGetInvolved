@@ -38,7 +38,8 @@ api
   })
   .delete((req, res, next) => {
     let  { _id } = req.body;
-    User.remove({ _id }, (err, bear) => { console.log({ err, bear }); res.send({ success : true }); });
+    console.log(_id)
+    User.remove({ _id }, (err, bear) => { res.send({ success : true }); });
   });
 
 module.exports = router;

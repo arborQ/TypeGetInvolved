@@ -40,7 +40,7 @@ export default class UserListPageComponent extends DefaultComponent<pages.users.
                                     Disabled={isDisabled}
                                     Text='Delete'
                                     key='delete'
-                                    OnClick={() => { destroy(`api/users?key=${firstItem.id}`, {}); }}  />];
+                                    OnClick={() => { destroy(`api/users`, { _id: firstItem.id }); }}  />];
         }
 
         let { UserList } = this.state;
