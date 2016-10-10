@@ -3,10 +3,12 @@ declare module ui.grid {
     interface IProps extends __React.Props<{}> {
         Columns: IGridColumn[],
         Data: GridData[],
-        Actions?: JSX.Element[]
+        Actions?: JSX.Element[],
+        OnSelect?: (selectedItems: GridData[]) => Promise<boolean> | void
     }
 
     interface IState {
+        SelectedItems: GridData[]
     }
 
     interface IComponent extends __React.Component<IProps, {}> {

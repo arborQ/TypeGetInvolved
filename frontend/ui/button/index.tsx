@@ -5,6 +5,7 @@ export default class ButtonComponent extends React.Component<ui.button.IProps, a
     let displayType = (this.props.DisplayType || 'flat') === 'flat' ? '' : 'mdl-button--raised';
     return (
       <button
+      disabled={this.props.Disabled || false}
       type={this.props.Type || 'button'}
       className={`mdl-button mdl-js-button mdl-js-ripple-effect ${displayType}`}
       onClick={() => { if(!!this.props.OnClick) { this.props.OnClick(); } }}>

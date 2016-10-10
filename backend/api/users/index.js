@@ -35,6 +35,10 @@ api
     console.log(newUser.save((err) => {
       res.send({ success : !err });
     }));
+  })
+  .delete((req, res, next) => {
+    let  { _id } = req.body;
+    User.remove({ _id }, (err, bear) => { console.log({ err, bear }); res.send({ success : true }); });
   });
 
 module.exports = router;

@@ -6,7 +6,7 @@ import { StoreComponent } from 'shared';
 export default class UserDetailsPageComponent extends StoreComponent<pages.users.details.IProps, pages.users.details.IState> {
     constructor() {
         super();
-        this.state = { UserData : { email: '', firstName: '', lastName: '', login: '' } };
+        this.state = { UserData : { email: '', firstName: '', id: null, lastName: '', login: '' } };
     }
     public render(): any {
         let { UserData } = this.state;

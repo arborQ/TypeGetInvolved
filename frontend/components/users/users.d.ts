@@ -1,6 +1,7 @@
 declare module pages.users.list{
     interface IState{
-        UserList: pages.users.details.IUser[]
+        UserList: pages.users.details.IUser[],
+        SelectedUsers: pages.users.details.IUser[]
     }
 
     interface IProps extends ReactRouter.RouteComponentProps<any, any>{
@@ -13,6 +14,7 @@ declare module pages.users.details{
 
     }
     interface IUser {
+        id: number;
         email: string;
         login: string;
         firstName: string;

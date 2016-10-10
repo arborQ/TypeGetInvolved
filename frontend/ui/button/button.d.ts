@@ -5,6 +5,7 @@ declare module ui.button{
     Type?: string;
     OnClick?: () => void;
     DisplayType?: DisplayType;
+    Disabled?: boolean;
   }
 
   interface IComponent extends __React.Component<IProps, {}> {

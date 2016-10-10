@@ -3,6 +3,10 @@ import { DefaultComponent } from 'shared';
 import Button from '../button';
 export default class GridComponent extends DefaultComponent<ui.grid.IProps, ui.grid.IState> {
 
+    public componentWillMount(): void {
+        this.state = { SelectedItems: [] };
+    }
+
     public render(): any {
         return (
             <div>
@@ -48,13 +52,30 @@ export default class GridComponent extends DefaultComponent<ui.grid.IProps, ui.g
 
     private renderRows(columns: ui.grid.IGridColumn[], data: ui.grid.GridData[]): JSX.Element[] {
         let key: number = 1;
-        let rows: JSX.Element[] = data.map(r => <tr key={key++}>{this.renderBodyColumns(columns, r)}</tr>);
+        let rows: JSX.Element[] = data.map(r =>
+        <tr
+            className={this.isSelected(r) ? 'is-selected' : ''}
+            onClick={() => { this.selectRow(r); }}
+            key={key++}>{this.renderBodyColumns(columns, r)}</tr>);
         return rows;
+    }
+
+    private selectRow(data: ui.grid.GridData): Promise<boolean> | void {
+        let newCollection = this.state.SelectedItems.filter(i => i.id !== data.id);
+        if (newCollection.length === this.state.SelectedItems.length) {
+            newCollection = [...this.state.SelectedItems, data];
+        }
+        this.UpdateState({ SelectedItems : newCollection });
+        return this.props.OnSelect ? this.props.OnSelect(newCollection) : Promise.resolve(true);
+    }
+
+    private isSelected(item: ui.grid.GridData): boolean {
+        return this.state.SelectedItems.filter(i => i.id === item.id).length > 0;
     }
 
     private registerUi(element: HTMLElement): void {
         if (!!element) {
-        componentHandler.upgradeElement(element);
+            componentHandler.upgradeElement(element);
         }
   }
 }
