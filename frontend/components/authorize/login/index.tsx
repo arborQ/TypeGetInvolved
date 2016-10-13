@@ -10,8 +10,8 @@ export default class LogInPageComponent extends StoreComponent<pages.login.IProp
     }
 
     public StoreDataReduce(data: any): any {
-        let { userData } = data;
-        return userData;
+        let { CurrentUser } = data;
+        return CurrentUser;
     }
 
     public UpdateFromStore(data: any): void {
@@ -48,7 +48,7 @@ export default class LogInPageComponent extends StoreComponent<pages.login.IProp
     }
 
     private SubmitLoginForm(): Promise<any> {
-        return post('api/authorize', {
+        return post('/authorize', {
             login: this.state.Login,
             password: this.state.Password,
         }).then((data) => {

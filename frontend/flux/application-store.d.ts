@@ -11,7 +11,7 @@ declare module "application-store" {
 declare module store {
 
     interface IApplicationStore {
-        UserData: any,
+        CurrentUser: any,
         UsersRepository: IRepository<repository.users.IUser>;
         Router : ReactRouterRedux.DefaultSelectLocationState;
     }

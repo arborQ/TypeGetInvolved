@@ -10,12 +10,12 @@ export default class MasterPageComponent extends React.Component<{ children: any
 
     public componentDidMount(): void {
         this.unsubscribeStore = store.subscribe(() => {
-            let { UserData } = store.getState();
-            let { IsAuthenticated } = UserData;
+            let { CurrentUser } = store.getState();
+            let { IsAuthenticated } = CurrentUser;
             this.setState(Object.assign({}, this.state, { IsAuthenticated }));
         });
-        let { UserData } = store.getState();
-        let { IsAuthenticated } = UserData;
+        let { CurrentUser } = store.getState();
+        let { IsAuthenticated } = CurrentUser;
         this.setState(Object.assign({}, this.state, { IsAuthenticated }));
     }
 

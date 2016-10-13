@@ -10,7 +10,7 @@ const middleware = routerMiddleware(browserHistory);
 let reudcers = combineReducers({
   CurrentUser,
   UsersRepository,
-  Router: routerReducer,
+  routing: routerReducer,
 });
 
 const logger = store => next => action => {

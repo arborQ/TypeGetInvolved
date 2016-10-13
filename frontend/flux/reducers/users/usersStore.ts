@@ -1,4 +1,4 @@
-import { store } from '../../store';
+import { store } from '../../index';
 
 export default (listener: (items: any) => void) => {
     return store.subscribe(() => {

@@ -1,4 +1,4 @@
-import { store } from '../../../store';
+import { store } from '../../../index';
 
 export default (): void => {
   const actionObject = {
