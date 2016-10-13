@@ -6,7 +6,7 @@ let defaultState = {
 let routerActionType = '@@router/LOCATION_CHANGE';
 
 export default (state = defaultState, action: any): any => {
-    if (action.type === routerActionType && action.payload.pathname === '/Users') {
+    if (action.type === 'LOAD_USERS') {
             return Object.assign({}, state, { IsLoading : true });
     }
     return state;

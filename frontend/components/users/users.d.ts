@@ -14,7 +14,7 @@ declare module pages.users.details{
 
     }
     interface IUser {
-        id: number;
+        id: string;
         email: string;
         login: string;
         firstName: string;

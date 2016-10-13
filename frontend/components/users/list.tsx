@@ -1,25 +1,28 @@
 import * as React from 'react';
 import { Input, Panel, Button, Form, Grid } from 'ui';
-import { post, get, destroy } from 'ajax';
+import { UsersRepository } from 'repository-store';
 import { DefaultComponent } from 'shared';
-
+console.log(UsersRepository);
 export default class UserListPageComponent extends DefaultComponent<pages.users.list.IProps, pages.users.list.IState> {
+    private unwatchStore: Function;
+
     constructor() {
         super();
         this.state = { SelectedUsers : [], UserList : [] };
     }
 
     public componentWillReceiveProps (next: pages.users.list.IProps) {
-        get('/users', {}).then((data) => {
-            this.UpdateState({ UserList: [...data] });
-        });
+        UsersRepository.LoadUsers();
     }
-
+    public componentWillUnmount(): void {
+        this.unwatchStore();
+    }
     public componentDidMount(): void {
         super.componentDidMount();
-        get('/users', {}).then((data) => {
-            this.UpdateState({ UserList: [...data] });
+        this.unwatchStore = UsersRepository.Store((data) => {
+            console.log(data);
         });
+        this.componentWillReceiveProps(this.props);
     };
 
     public render(): any {
@@ -46,7 +49,7 @@ export default class UserListPageComponent extends DefaultComponent<pages.users.
                                     Disabled={isDisabled}
                                     Text='Delete'
                                     key='delete'
-                                    OnClick={() => { destroy(`api/users`, { _id: firstItem.id }); }}  />];
+                                    OnClick={() => { UsersRepository.DestroyUser(firstItem.id); }}  />];
         }
 
         let { UserList } = this.state;

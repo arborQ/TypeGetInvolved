@@ -14,3 +14,7 @@ export default (): void => {
 
   store.dispatch(actionObject);
 };
+
+// get('/users', {}).then((data) => {
+        //     this.UpdateState({ UserList: [...data] });
+        // });
