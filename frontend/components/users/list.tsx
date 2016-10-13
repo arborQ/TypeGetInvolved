@@ -20,7 +20,11 @@ export default class UserListPageComponent extends DefaultComponent<pages.users.
     public componentDidMount(): void {
         super.componentDidMount();
         this.unwatchStore = UsersRepository.Store((data) => {
-            console.log(data);
+            this.UpdateState({
+                SelectedUsers: [
+                    ...this.state.SelectedUsers.filter(s => data.Items.filter(u => u.id === s.id).length !== 0),
+                    ],
+                UserList: [ ...data.Items ] });
         });
         this.componentWillReceiveProps(this.props);
     };

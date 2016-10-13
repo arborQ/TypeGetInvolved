@@ -50,13 +50,11 @@ export default class UserDetailsPageComponent extends StoreComponent<pages.users
     }
 
     private cloase(): void {
-        alert('Navigate');
         this.Navigate('/Users');
-        // this.props.history.push('/Users');
     }
 
     private submitForm(): Promise<any> {
         let { UserData } = this.state;
-        return post('api/users', UserData).then(this.cloase.bind(this));
+        return post('/users', UserData).then(this.cloase.bind(this));
     }
 }
