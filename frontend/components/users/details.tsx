@@ -10,9 +10,14 @@ export default class UserDetailsPageComponent extends StoreComponent<pages.users
     }
     public render(): any {
         let { UserData } = this.state;
+
+        const actions = [
+            <Button key='save' Text='Save' Type='submit' />,
+            <Button key='cloase' Text='Cloase' Type='Button' OnClick={() => { this.Navigate('/Users'); }} />,
+        ];
         return (
             <Form OnSubmit={this.submitForm.bind(this)}>
-                <Dialog Title='Add user' Actions={ [<Button key='save' Text='Save' Type='submit' />] }>
+                <Dialog Title='Add user' Actions={ actions }>
                     <Input
                     Text='Login'
                     Value={UserData.login}
@@ -45,7 +50,9 @@ export default class UserDetailsPageComponent extends StoreComponent<pages.users
     }
 
     private cloase(): void {
-        this.props.history.push('/Users');
+        alert('Navigate');
+        this.Navigate('/Users');
+        // this.props.history.push('/Users');
     }
 
     private submitForm(): Promise<any> {

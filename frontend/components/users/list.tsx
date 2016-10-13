@@ -9,9 +9,15 @@ export default class UserListPageComponent extends DefaultComponent<pages.users.
         this.state = { SelectedUsers : [], UserList : [] };
     }
 
+    public componentWillReceiveProps (next: pages.users.list.IProps) {
+        get('/users', {}).then((data) => {
+            this.UpdateState({ UserList: [...data] });
+        });
+    }
+
     public componentDidMount(): void {
         super.componentDidMount();
-        get('api/users', {}).then((data) => {
+        get('/users', {}).then((data) => {
             this.UpdateState({ UserList: [...data] });
         });
     };

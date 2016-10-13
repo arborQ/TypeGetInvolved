@@ -5,6 +5,7 @@
   "scripts": {
     "run:dev": "babel-node ./bin/www",
     "reinstall": "npm i && bower i && tsd reinstall",
+    "webpack": "webpack --config config/webpack.dev.js --color",
     "build:dev": "webpack --config config/webpack.dev.js --color --watch",
     "start:dev": "concurrent \"npm run build:dev\" \"mongod\" \"gulp less-watch\" \"npm run run:dev\""
   },
@@ -69,6 +70,7 @@
     "gulp-concat-css": "^2.3.0",
     "gulp-less": "^3.1.0",
     "node-sass": "^3.8.0",
-    "sass-loader": "^4.0.1"
+    "sass-loader": "^4.0.1",
+    "tsconfig-glob": "^0.4.3"
   }
 }

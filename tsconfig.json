@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "es6",
     "jsx": "preserve",
     "noEmit": true,
     "experimentalDecorators": true,
@@ -13,11 +13,13 @@
     "!./node_modules/**/*.ts"
   ],
   "files": [
+    "./typings/tsd.d.ts",
     "./frontend/components/authorize/login/login.d.ts",
     "./frontend/components/shared/index.d.ts",
     "./frontend/components/users/users.d.ts",
     "./frontend/flux/application-store.d.ts",
     "./frontend/flux/reducers/authorize/reduce.authorize.d.ts",
+    "./frontend/flux/reducers/users/users.d.ts",
     "./frontend/services/ajax/promise-ajax.d.ts",
     "./frontend/services/promises/promises-service.d.ts",
     "./frontend/ui/button/button.d.ts",
@@ -38,7 +40,6 @@
     "./typings/react/react-dom.d.ts",
     "./typings/react/react.d.ts",
     "./typings/redux/redux.d.ts",
-    "./typings/tsd.d.ts",
     "./frontend/components/authorize/login/index.tsx",
     "./frontend/components/master/displayMessage.tsx",
     "./frontend/components/master/index.tsx",
@@ -61,12 +62,16 @@
     "./frontend/components/shared/component/baseComponent.ts",
     "./frontend/components/shared/component/storeComponent.ts",
     "./frontend/components/shared/index.ts",
-    "./frontend/flux/index.ts",
     "./frontend/flux/reducers/authorize/action.logout.ts",
     "./frontend/flux/reducers/authorize/action.success.ts",
     "./frontend/flux/reducers/authorize/cookies.ts",
     "./frontend/flux/reducers/authorize/defaultState.ts",
     "./frontend/flux/reducers/authorize/reducer.ts",
+    "./frontend/flux/reducers/users/actions/loadUsers.ts",
+    "./frontend/flux/reducers/users/index.ts",
+    "./frontend/flux/reducers/users/usersReducer.ts",
+    "./frontend/flux/reducers/users/usersStore.ts",
+    "./frontend/flux/store.ts",
     "./frontend/services/promises/index.ts",
     "./frontend/ui/index.ts"
   ],

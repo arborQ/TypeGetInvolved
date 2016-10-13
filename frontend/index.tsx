@@ -10,7 +10,7 @@ import NoMatch from './components/noMatch';
 
 import { LoginPage } from './components/authorize';
 import UsersRouteData from './components/users';
-import { store } from './flux';
+import { store } from './flux/store';
 
 const history = syncHistoryWithStore(browserHistory, store);
 

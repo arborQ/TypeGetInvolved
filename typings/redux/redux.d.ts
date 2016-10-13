@@ -32,17 +32,17 @@ declare module Redux {
         (obj: MiddlewareArg): Function;
     }
 
-    class Store {
+    class Store<T> {
         getReducer(): Reducer;
         replaceReducer(nextReducer: Reducer): void;
         dispatch(action: any): any;
-        getState(): any;
+        getState(): T;
         subscribe(listener: Function): Function;
     }
 
-    function createStore(reducer: Reducer, initialState?: any): Store;
+    function createStore<T>(reducer: Reducer, initialState?: any): Store<T>;
     function bindActionCreators<T>(actionCreators: T, dispatch: Dispatch): T;
-    function combineReducers(reducers: any): Reducer;
+    function combineReducers<T>(reducers: T): Reducer;
     function applyMiddleware(...middlewares: Middleware[]): Function;
     function compose<T extends Function>(...functions: Function[]): T;
 }

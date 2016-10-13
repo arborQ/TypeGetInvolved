@@ -8,9 +8,15 @@ declare module __shared{
   }
 
   export class StoreComponent<P, S> extends DefaultComponent<P, S> implements __React.ComponentLifecycle<P, S>{ 
-    UpdateFromStore(data : any) : void;
+    UpdateFromStore(data : store.IApplicationStore) : void;
     Dispatch(actionName : string, data? : any) : void;
-    StoreDataReduce(data : any) : any;
+    StoreDataReduce(data : store.IApplicationStore) : any;
+    Navigate(path: string): void;
+  }
+
+  // TODO: implement this
+  export class PageComponent<P, S, Q> extends StoreComponent<P, S> implements __React.ComponentLifecycle<P, S>{  
+    LoadData(parameters: Q): Promise<any>
   }
 
   export class AuthorizedComponent<P, S extends { IsAuthorized : boolean }> extends StoreComponent<P, S> implements __React.ComponentLifecycle<P, S>{
