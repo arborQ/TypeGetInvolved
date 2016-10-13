@@ -4,6 +4,7 @@ var concatCss = require('gulp-concat-css');
 var cleanCSS = require('gulp-clean-css');
 var autoprefixer = require('gulp-autoprefixer');
 var uiPath = 'frontEnd/ui/material-design/**/*.less';
+var tsConfig = require("tsconfig-glob");  
 
 gulp.task('less', function(){
   gulp.src(uiPath)
@@ -19,4 +20,12 @@ gulp.task('less', function(){
 
 gulp.task('less-watch', [ 'less' ], function(){
   gulp.watch(uiPath, [ 'less' ] );
+});
+
+gulp.task("tsconfig-glob", function () {  
+    return tsConfig({
+        configPath: ".",
+        cwd: process.cwd(),
+        indent: 2
+    });
 });

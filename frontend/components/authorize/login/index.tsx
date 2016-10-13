@@ -10,8 +10,8 @@ export default class LogInPageComponent extends StoreComponent<pages.login.IProp
     }
 
     public StoreDataReduce(data: any): any {
-        let { userData } = data;
-        return userData;
+        let { CurrentUser } = data;
+        return CurrentUser;
     }
 
     public UpdateFromStore(data: any): void {
@@ -22,13 +22,13 @@ export default class LogInPageComponent extends StoreComponent<pages.login.IProp
     public render(): React.ReactElement<{}> {
         if (this.state.IsAuthenticated) {
             return <Panel Title='Already logged in' Actions={[
-                <Button key='logout' Text='Logout' OnClick={() => this.Dispatch('authorize.logout')} />,
+                <Button key='logout' Text='Logout' OnClick={() => this.Dispatch('authorize.logout')} DisplayType='raised' />,
                 ]}>
                 </Panel>;
         }
         return (
             <Form OnSubmit={this.SubmitLoginForm.bind(this)}>
-                <Panel Title='Login to see more' Actions={[<Button key='login' Text='Login' Type={'submit'} />]}>
+                <Panel Title='Login to see more' Actions={[<Button key='login' Text='Login' Type={'submit'} DisplayType='raised' />]}>
                     <Input
                         Autofocus={true}
                         Name='Login'
@@ -48,7 +48,7 @@ export default class LogInPageComponent extends StoreComponent<pages.login.IProp
     }
 
     private SubmitLoginForm(): Promise<any> {
-        return post('api/authorize', {
+        return post('/authorize', {
             login: this.state.Login,
             password: this.state.Password,
         }).then((data) => {

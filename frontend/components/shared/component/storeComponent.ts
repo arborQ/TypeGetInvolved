@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { store } from 'application-store';
+import { store, navigate } from 'application-store';
 
 import BaseComponent from './baseComponent';
 
 export default class StoreComponent<P, S> extends BaseComponent<P, S> {
-  protected UpdateFromStore: (data: any) => void;
+  protected UpdateFromStore: (data: store.IApplicationStore) => void;
   private unsubscribeStore: Function;
 
   public componentDidMount(): void {
@@ -28,9 +28,14 @@ export default class StoreComponent<P, S> extends BaseComponent<P, S> {
     }
   }
 
-  protected StoreDataReduce(data: any): any {
+  protected Navigate(path: string): void {
+    navigate(path);
+  }
+
+  protected StoreDataReduce(data: store.IApplicationStore): any {
     return data;
   }
+  
   protected Dispatch(type: string, data?: any): void {
     store.dispatch({ type, data });
   }

@@ -10,12 +10,12 @@ export default class MasterPageComponent extends React.Component<{ children: any
 
     public componentDidMount(): void {
         this.unsubscribeStore = store.subscribe(() => {
-            let { userData } = store.getState();
-            let { IsAuthenticated } = userData;
+            let { CurrentUser } = store.getState();
+            let { IsAuthenticated } = CurrentUser;
             this.setState(Object.assign({}, this.state, { IsAuthenticated }));
         });
-        let { userData } = store.getState();
-        let { IsAuthenticated } = userData;
+        let { CurrentUser } = store.getState();
+        let { IsAuthenticated } = CurrentUser;
         this.setState(Object.assign({}, this.state, { IsAuthenticated }));
     }
 
@@ -28,15 +28,21 @@ export default class MasterPageComponent extends React.Component<{ children: any
             { Name: 'Home', Route: '/' },
         ];
         if (this.state.IsAuthenticated) {
-            links.push({
-                Name: 'LogOut',
-                OnClick : (e: React.MouseEvent) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    store.dispatch({ type : 'authorize.logout' });
+            links.push(
+                {
+                    Name: 'Users',
+                    Route : '/Users',
                 },
-                Route : '/LogOut',
-         });
+                {
+                    Name: 'LogOut',
+                    OnClick : (e: React.MouseEvent) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        store.dispatch({ type : 'authorize.logout' });
+                    },
+                    Route : '/LogOut',
+                }
+                );
         } else {
             links.push({ Name: 'LogIn', Route: '/login' });
         }
