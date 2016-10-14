@@ -22,6 +22,9 @@ declare module store {
 
     interface IUserStore extends IDefaultStore<repository.users.IUser> {
         LoadUsers: () => void;
+        LoadUser: (id: string) => void;
+        UpdateUser: (userData: any) => Promise<string>;
+        CreateUser: (userData: any) => Promise<string>;
         DestroyUser: (userId: string) => void;
     }
 

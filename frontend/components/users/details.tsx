@@ -1,23 +1,54 @@
 import * as React from 'react';
 import { Dialog, Button, Form, Input } from 'ui';
-import { post } from 'ajax';
-import { StoreComponent } from 'shared';
+import { DefaultComponent } from 'shared';
+import { UsersRepository } from 'repository-store';
 
-export default class UserDetailsPageComponent extends StoreComponent<pages.users.details.IProps, pages.users.details.IState> {
+export default class UserDetailsPageComponent extends DefaultComponent<pages.users.details.IProps, pages.users.details.IState> {
+    private unwatchStore: Function;
+    private get selectedUserId(): string {
+        return this.props.params.id;
+    }
+
+    private get isEditForm(): boolean {
+        return !!this.state.UserData.id;
+    }
+    private defaultState: pages.users.details.IState 
+        = { UserData: { email: '', firstName: '', id: null, lastName: '', login: '' } };
     constructor() {
         super();
-        this.state = { UserData : { email: '', firstName: '', id: null, lastName: '', login: '' } };
+        this.state = this.defaultState;
     }
+
+    public componentWillUnmount(): void {
+        this.unwatchStore();
+    }
+
+    public componentWillMount(): void {
+        if (!!this.selectedUserId) {
+            UsersRepository.LoadUser(this.selectedUserId);
+        }
+
+        this.unwatchStore = UsersRepository.Store((data) => {
+            let [ UserData ] = data.Items.filter( u => u.id === this.selectedUserId);
+            if (!!UserData) {
+                this.UpdateState({ UserData });
+            } else {
+                this.UpdateState(this.defaultState);
+            }
+        });
+    }
+
     public render(): any {
         let { UserData } = this.state;
 
         const actions = [
-            <Button key='save' Text='Save' Type='submit' />,
-            <Button key='cloase' Text='Cloase' Type='Button' OnClick={() => { this.Navigate('/Users'); }} />,
+            <Button key='cloase' Text='Cancel' Type='button' OnClick={() => {  }} />,
+            <Button key='save' Text={this.isEditForm ? 'EditUserButtonText' : 'AddUserButtonText' } Type='submit' />,
         ];
+
         return (
             <Form OnSubmit={this.submitForm.bind(this)}>
-                <Dialog Title='Add user' Actions={ actions }>
+                <Dialog Title={ !!this.isEditForm ? 'EditUserHeaderText' : 'AddUserHeaderText' } Actions={ actions }>
                     <Input
                     Text='Login'
                     Value={UserData.login}
@@ -50,11 +81,16 @@ export default class UserDetailsPageComponent extends StoreComponent<pages.users
     }
 
     private cloase(): void {
-        this.Navigate('/Users');
+        // this.Navigate('/Users');
     }
 
     private submitForm(): Promise<any> {
         let { UserData } = this.state;
-        return post('/users', UserData).then(this.cloase.bind(this));
+        if (this.isEditForm){
+            UsersRepository.UpdateUser(this.state.UserData);
+        } else {
+            UsersRepository.CreateUser(this.state.UserData);
+        }
+        return null;
     }
 }

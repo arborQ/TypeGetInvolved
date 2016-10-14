@@ -6,14 +6,14 @@ export default class InputComponent extends React.Component<ui.input.IProps, ui.
   }
   public render(): any {
     let containerClasses: string[] = ['mdl-textfield', 'mdl-js-textfield', 'mdl-textfield--floating-label'];
-    if (this.state.IsDirty) {
+    if (this.state.IsDirty || !!this.props.Value) {
       containerClasses = [...containerClasses, 'is-dirty'];
     }
     if (!!this.props.ErrorText) {
       containerClasses = [...containerClasses, 'is-invalid'];
     }
     return (
-          <div className={containerClasses.join(' ')} ref={this.registerUi}>
+          <div className={containerClasses.join(' ')} ref={this.registerUi} style={{ width: '100%' }}>
               <input
                 className='mdl-textfield__input'
                 type={this.props.Type || 'text'}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Input, Panel, Button, Form, Grid } from 'ui';
 import { UsersRepository } from 'repository-store';
 import { DefaultComponent } from 'shared';
-console.log(UsersRepository);
+
 export default class UserListPageComponent extends DefaultComponent<pages.users.list.IProps, pages.users.list.IState> {
     private unwatchStore: Function;
 
@@ -22,12 +22,23 @@ export default class UserListPageComponent extends DefaultComponent<pages.users.
         this.unwatchStore = UsersRepository.Store((data) => {
             this.UpdateState({
                 SelectedUsers: [
-                    ...this.state.SelectedUsers.filter(s => data.Items.filter(u => u.id === s.id).length !== 0),
+                    ...this.state.SelectedUsers.filter(s => data.Items.filter(u => u.id === s).length !== 0),
                     ],
                 UserList: [ ...data.Items ] });
         });
         this.componentWillReceiveProps(this.props);
     };
+
+    public SelectUserRow(id: string): Promise<boolean> {
+        let selectedItems = [ ...this.state.SelectedUsers ];
+        if (selectedItems.filter(u => u === id).length > 0) {
+            selectedItems = [...selectedItems.filter(u => u !== id)];
+        } else {
+            selectedItems = [...selectedItems, id];
+        }
+        this.UpdateState({ SelectedUsers: selectedItems });
+        return Promise.resolve(true);
+    }
 
     public render(): any {
         let columns: ui.grid.IGridColumn[] = [
@@ -48,12 +59,12 @@ export default class UserListPageComponent extends DefaultComponent<pages.users.
                                     Disabled={isDisabled}
                                     Text='Edit'
                                     key='edit'
-                                    OnClick={() => { this.props.history.push(`/Users/Details/${firstItem.id}`); }}  />];
+                                    OnClick={() => { this.props.history.push(`/Users/Details/${firstItem}`); }}  />];
             actions = [...actions, <Button
                                     Disabled={isDisabled}
                                     Text='Delete'
                                     key='delete'
-                                    OnClick={() => { UsersRepository.DestroyUser(firstItem.id); }}  />];
+                                    OnClick={() => { UsersRepository.DestroyUser(firstItem); }}  />];
         }
 
         let { UserList } = this.state;
@@ -63,7 +74,8 @@ export default class UserListPageComponent extends DefaultComponent<pages.users.
                     Columns={columns}
                     Data={UserList}
                     Actions={actions}
-                    OnSelect={(SelectedUsers) => { this.UpdateState({ SelectedUsers }); }}
+                    SelectedIds={this.state.SelectedUsers}
+                    OnSelect={this.SelectUserRow.bind(this)}
                     />
                 {this.props.children}
             </div>

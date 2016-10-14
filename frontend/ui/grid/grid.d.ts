@@ -4,11 +4,11 @@ declare module ui.grid {
         Columns: IGridColumn[],
         Data: GridData[],
         Actions?: JSX.Element[],
-        OnSelect?: (selectedItems: GridData[]) => Promise<boolean> | void
+        SelectedIds?: string[],
+        OnSelect?: (id: string | number) => Promise<boolean> | void
     }
 
     interface IState {
-        SelectedItems: GridData[]
     }
 
     interface IComponent extends __React.Component<IProps, {}> {

@@ -2,7 +2,7 @@ declare module ui.button{
   type DisplayType = 'flat' | 'raised';
   interface IProps extends __React.Props<{}>{
     Text: string;
-    Type?: string;
+    Type?: 'button' | 'submit';
     OnClick?: () => void;
     DisplayType?: DisplayType;
     Disabled?: boolean;
