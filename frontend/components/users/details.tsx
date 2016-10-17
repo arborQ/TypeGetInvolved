@@ -87,10 +87,13 @@ export default class UserDetailsPageComponent extends DefaultComponent<pages.use
     private submitForm(): Promise<any> {
         let { UserData } = this.state;
         if (this.isEditForm){
-            UsersRepository.UpdateUser(this.state.UserData);
+            return UsersRepository.UpdateUser(this.state.UserData).then((userId: string) => {
+                console.log(userId);
+            });
         } else {
-            UsersRepository.CreateUser(this.state.UserData);
+            return UsersRepository.CreateUser(this.state.UserData).then((userId: string) => {
+                console.log(userId);
+            });
         }
-        return null;
     }
 }

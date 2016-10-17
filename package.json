@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "run:dev": "babel-node ./bin/www",
+    "run:prod": "babel-node ./bin/www",
+    "run:dev" : "nodemon --exec npm run run:prod",
     "reinstall": "npm i && bower i && tsd reinstall",
     "webpack": "webpack --config config/webpack.dev.js --color",
     "build:dev": "webpack --config config/webpack.dev.js --color --watch",
