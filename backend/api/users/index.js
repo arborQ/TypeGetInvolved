@@ -30,9 +30,9 @@ api
     let  { id } = req.body;
     console.log(id);
     User.findOne({ _id : id }).then((user) => {
-      user = viewModelToModel(req.body, user);
+      Object.assign(user, viewModelToModel(req.body))
       user.save(() => {
-        res.send(model.modelToViewModel(user)); 
+        res.send(modelToViewModel(user)); 
       });
     }).catch((err) => {
       res.send({ success : false });
