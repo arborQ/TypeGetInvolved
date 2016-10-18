@@ -6,5 +6,5 @@ declare module store.messages {
         Messages: IMessage[];
     }
 
-    export type MessageReducer = (state: IMessagesState, action: ReactRouterRedux.RouterAction) => void;
+    export type MessageReducer = (state: IMessagesState, action: ReactRouterRedux.RouterAction) => IMessagesState;
 }
