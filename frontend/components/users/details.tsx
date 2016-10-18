@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dialog, Button, Form, Input } from 'ui';
 import { DefaultComponent } from 'shared';
-import { UsersRepository } from 'repository-store';
+import { UsersRepository, Router } from 'repository-store';
 
 export default class UserDetailsPageComponent extends DefaultComponent<pages.users.details.IProps, pages.users.details.IState> {
     private unwatchStore: Function;
@@ -12,7 +12,7 @@ export default class UserDetailsPageComponent extends DefaultComponent<pages.use
     private get isEditForm(): boolean {
         return !!this.state.UserData.id;
     }
-    private defaultState: pages.users.details.IState 
+    private defaultState: pages.users.details.IState
         = { UserData: { email: '', firstName: '', id: null, lastName: '', login: '' } };
     constructor() {
         super();
@@ -42,13 +42,15 @@ export default class UserDetailsPageComponent extends DefaultComponent<pages.use
         let { UserData } = this.state;
 
         const actions = [
-            <Button key='cloase' Text='Cancel' Type='button' OnClick={() => {  }} />,
+            <Button key='cloase' Text='Cancel' Type='button' OnClick={() => { Router.Navigate('/Users'); }} />,
             <Button key='save' Text={this.isEditForm ? 'EditUserButtonText' : 'AddUserButtonText' } Type='submit' />,
         ];
 
         return (
-            <Form OnSubmit={this.submitForm.bind(this)}>
-                <Dialog Title={ !!this.isEditForm ? 'EditUserHeaderText' : 'AddUserHeaderText' } Actions={ actions }>
+                <Dialog
+                OnSubmit={this.submitForm.bind(this)}
+                Title={ !!this.isEditForm ? 'EditUserHeaderText' : 'AddUserHeaderText' }
+                Actions={ actions }>
                     <Input
                     Text='Login'
                     Value={UserData.login}
@@ -71,7 +73,6 @@ export default class UserDetailsPageComponent extends DefaultComponent<pages.use
                     OnChange={(lastName) => { this.updateUserData({lastName}); }}
                     Name='LastName' />
                 </Dialog>
-            </Form>
         );
     }
     private updateUserData(userChunk: any): void {
@@ -88,11 +89,11 @@ export default class UserDetailsPageComponent extends DefaultComponent<pages.use
         let { UserData } = this.state;
         if (this.isEditForm){
             return UsersRepository.UpdateUser(this.state.UserData).then((userId: string) => {
-                console.log(userId);
+                Router.Navigate('/Users');
             });
         } else {
-            return UsersRepository.CreateUser(this.state.UserData).then((userId: string) => {
-                console.log(userId);
+            return UsersRepository.CreateUser(this.state.UserData).then((user: any) => {
+               Router.Navigate(`/Users/Details/${user.id}`);
             });
         }
     }

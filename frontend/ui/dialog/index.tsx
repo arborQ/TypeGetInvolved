@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Button from '../button';
-export default class DialogComponent extends React.Component<ui.panel.IProps, { IsOpen: boolean }> {
+import Form from '../form';
+
+export default class DialogComponent extends React.Component<ui.dialog.IProps, { IsOpen: boolean }> {
     private dialogElement: any;
 
     constructor() {
@@ -29,11 +31,13 @@ export default class DialogComponent extends React.Component<ui.panel.IProps, { 
                     open={this.state.IsOpen}
                     className='mdl-dialog'
                     style={{ 'maxWidth': '400px', 'width': 'auto', 'position': 'absolute', 'top': '10%' }} >
+                    <Form OnSubmit={this.props.OnSubmit}>
                         <div className='mdl-dialog__title'>{this.props.Title}</div>
                         <div className='mdl-dialog__content'>{this.props.children}</div>
                         <div className='mdl-dialog__actions'>
-                            {actions}
+                            { actions }
                         </div>
+                    </Form>
                 </dialog>
             </div>
         );

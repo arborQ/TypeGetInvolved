@@ -9,6 +9,7 @@ declare module "application-store" {
 
 declare module __repositoryStore {
     export var UsersRepository: store.IUserStore;
+    export var Router: store.IRouterStore;
 }
 
 declare module "repository-store" {
@@ -18,6 +19,10 @@ declare module "repository-store" {
 declare module store {
     interface IDefaultStore<T> {
         Store: (listener: (items: store.IRepositoryState<T>) => void) => Function;
+    }
+
+    interface IRouterStore {
+        Navigate: (path: string, params?: any) => void;
     }
 
     interface IUserStore extends IDefaultStore<repository.users.IUser> {

@@ -9,8 +9,12 @@ export default class GridComponent extends DefaultComponent<ui.grid.IProps, ui.g
 
     public render(): any {
         return (
-            <div>
-                <div className='mdl-shadow--2dp'>
+            <div className='grid'>
+                <div
+                    className='mdl-shadow--2dp grid-container'
+                    // tabIndex={1}
+                    // onKeyDown={ this.keyboardEvent.bind(this) }
+                >
                     <div style={{ 'padding': '10px' }}>
                         {this.props.Actions || []}
                     </div>
@@ -38,6 +42,11 @@ export default class GridComponent extends DefaultComponent<ui.grid.IProps, ui.g
         );
     };
 
+    private keyboardEvent(e: __React.KeyboardEvent): Promise<any> {
+        console.log(e.keyCode);
+        return null;
+    }
+
     private renderHeaderColumns(columns: ui.grid.IGridColumn[]): JSX.Element[] {
         let key: number = 1;
         let headerColumns: JSX.Element[] = columns.map(c => <th key={key++}>{c.Name}</th>);
@@ -61,11 +70,6 @@ export default class GridComponent extends DefaultComponent<ui.grid.IProps, ui.g
     }
 
     private selectRow(data: ui.grid.GridData): Promise<boolean> | void {
-        // let newCollection = this.state.SelectedItems.filter(i => i.id !== data.id);
-        // if (newCollection.length === this.state.SelectedItems.length) {
-        //     newCollection = [...this.state.SelectedItems, data];
-        // }
-        // this.UpdateState({ SelectedItems : newCollection });
         return this.props.OnSelect ? this.props.OnSelect(data.id) : Promise.resolve(true);
     }
 

@@ -23,7 +23,7 @@ api
     });
 
     newUser.save((err) => {
-      res.send(newUser._id);
+      res.send(modelToViewModel(newUser));
     });
   })
   .put((req, res, next) => { 
@@ -32,7 +32,7 @@ api
     User.findOne({ _id : id }).then((user) => {
       Object.assign(user, viewModelToModel(req.body))
       user.save(() => {
-        res.send(modelToViewModel(user)); 
+          res.send(modelToViewModel(user)); 
       });
     }).catch((err) => {
       res.send({ success : false });
