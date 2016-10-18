@@ -23,4 +23,4 @@ export var MultipleSelect = <T>(id: T, items: T[]): T[] => {
         selectedItems = [...selectedItems, id];
     }
     return selectedItems;
-}; 
+};
