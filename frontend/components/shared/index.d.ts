@@ -28,6 +28,9 @@ declare module __shared{
   export interface IAuthorizedComponentState{
     IsAuthorized : boolean;
   }
+
+  export var SingleSelect: <T>(id: T, items: T[]) => T[]; 
+  export var MultipleSelect: <T>(id: T, items: T[]) => T[]; 
 }
 
 declare module "shared" {

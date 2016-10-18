@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Input, Panel, Button, Form, Grid } from 'ui';
 import { UsersRepository } from 'repository-store';
-import { DefaultComponent } from 'shared';
+import { DefaultComponent, SingleSelect  } from 'shared';
+const GridSelectMode = SingleSelect;
 
 export default class UserListPageComponent extends DefaultComponent<pages.users.list.IProps, pages.users.list.IState> {
     private unwatchStore: Function;
@@ -30,13 +31,7 @@ export default class UserListPageComponent extends DefaultComponent<pages.users.
     };
 
     public SelectUserRow(id: string): Promise<boolean> {
-        let selectedItems = [ ...this.state.SelectedUsers ];
-        if (selectedItems.filter(u => u === id).length > 0) {
-            selectedItems = [...selectedItems.filter(u => u !== id)];
-        } else {
-            selectedItems = [...selectedItems, id];
-        }
-        this.UpdateState({ SelectedUsers: selectedItems });
+        this.UpdateState({ SelectedUsers: GridSelectMode(id, this.state.SelectedUsers) });
         return Promise.resolve(true);
     }
 
