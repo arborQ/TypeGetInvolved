@@ -1,4 +1,6 @@
 import userCreated from './userCreated';
+import userRemoved from './userRemoved';
+
 
 let defaultState: store.messages.IMessagesState = {
     Messages : [],
@@ -6,6 +8,7 @@ let defaultState: store.messages.IMessagesState = {
 
 let reducers = [
         userCreated,
+        userRemoved,
     ];
 
 let reducer: store.messages.MessageReducer

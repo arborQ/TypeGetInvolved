@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Message } from 'ui';
 import { Messages } from 'repository-store';
+
 export default class DisplayMessageComponent extends React.Component<any, { Messages: string[] }> {
     private disposeStoreConnection: Function = null;
 
@@ -9,9 +10,9 @@ export default class DisplayMessageComponent extends React.Component<any, { Mess
     }
 
     public componentWillMount(): void {
+        this.state = { Messages: [] };
         this.disposeStoreConnection = Messages.Store((state) => {
-            console.log(state);
-            this.setState(Object.assign({}, this.state, { Messages: state.Messages }));
+            this.setState(Object.assign({}, this.state, { Messages: state.Messages.map(a => a.Text) }));
         });
     }
 
@@ -24,6 +25,7 @@ export default class DisplayMessageComponent extends React.Component<any, { Mess
     }
 
     private displayText(): string {
+        console.log('this.state.Messages', this.state.Messages);
         return this.state.Messages.join(', ');
     }
 }
