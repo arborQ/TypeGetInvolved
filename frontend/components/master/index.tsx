@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Layout } from 'ui';
 import { store } from 'application-store';
+import DisplayMessage from './displayMessage';
+
 export default class MasterPageComponent extends React.Component<{ children: any }, { IsAuthenticated: boolean }> {
     private unsubscribeStore: Function;
     constructor() {
@@ -51,6 +53,7 @@ export default class MasterPageComponent extends React.Component<{ children: any
                 <Layout Links={links} Title='ArborPage'>
                     <div>{this.props.children}</div>
                 </Layout>
+                <DisplayMessage />
             </div>
         );
     }

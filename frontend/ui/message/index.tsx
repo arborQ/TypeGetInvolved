@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export default class MessageComponent extends React.Component<ui.message.IProps, any> {
+export default class MessageComponent extends React.Component<ui.message.IProps, {}> {
     public render(): any {
         return (
             <div ref={this.showMessage.bind(this)} className='mdl-js-snackbar mdl-snackbar mdl-snackbar--active'>

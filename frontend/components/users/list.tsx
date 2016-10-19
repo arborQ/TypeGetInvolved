@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Input, Panel, Button, Form, Grid } from 'ui';
 import { UsersRepository } from 'repository-store';
 import { DefaultComponent, SingleSelect  } from 'shared';
-const GridSelectMode = SingleSelect;
 
+const GridSelectMode = SingleSelect;
 export default class UserListPageComponent extends DefaultComponent<pages.users.list.IProps, pages.users.list.IState> {
     private unwatchStore: Function;
 

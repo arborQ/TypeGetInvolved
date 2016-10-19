@@ -71,6 +71,8 @@
     "./frontend/flux/reducers/authorize/cookies.ts",
     "./frontend/flux/reducers/authorize/defaultState.ts",
     "./frontend/flux/reducers/authorize/reducer.ts",
+    "./frontend/flux/reducers/messages/actions/addMessage.ts",
+    "./frontend/flux/reducers/messages/index.ts",
     "./frontend/flux/reducers/messages/messagesStore.ts",
     "./frontend/flux/reducers/messages/reducers/index.ts",
     "./frontend/flux/reducers/messages/reducers/userCreated.ts",

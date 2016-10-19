@@ -9,6 +9,7 @@ declare module "application-store" {
 
 declare module __repositoryStore {
     export var UsersRepository: store.IUserStore;
+    export var Messages: store.IMessageStore;
     export var Router: store.IRouterStore;
 }
 
@@ -17,8 +18,11 @@ declare module "repository-store" {
 }
 
 declare module store {
+
+    type ComponentStore<T> = (listener: (model : T) => void) => Function;
+
     interface IDefaultStore<T> {
-        Store: (listener: (items: store.IRepositoryState<T>) => void) => Function;
+        Store: ComponentStore<store.IRepositoryState<T>>;
     }
 
     interface IRouterStore {
@@ -33,9 +37,15 @@ declare module store {
         DestroyUser: (userId: string) => void;
     }
 
+    interface IMessageStore {
+        AddMessage: Redux.Reducer;
+        Store: ComponentStore<store.messages.IMessagesState>;
+    }
+
     interface IApplicationStore {
         CurrentUser: any,
         UsersRepository: IRepositoryState<repository.users.IUser>;
+        Messages: store.messages.IMessagesState;
         Router : ReactRouterRedux.DefaultSelectLocationState;
     }
 
