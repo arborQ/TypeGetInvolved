@@ -3,7 +3,7 @@ var gulpLess = require('gulp-less');
 var concatCss = require('gulp-concat-css');
 var cleanCSS = require('gulp-clean-css');
 var autoprefixer = require('gulp-autoprefixer');
-var uiPath = 'frontEnd/ui/material-design/**/*.less';
+var uiPath = 'frontEnd/ui/**/*.less';
 var tsConfig = require("tsconfig-glob");  
 
 gulp.task('less', function(){
@@ -15,7 +15,7 @@ gulp.task('less', function(){
         }))
   .pipe(concatCss('bundle.css'))
   .pipe(cleanCSS())
-  .pipe(gulp.dest('public/stylesheets'))
+  .pipe(gulp.dest('public/stylesheets'));
 });
 
 gulp.task('less-watch', [ 'less' ], function(){

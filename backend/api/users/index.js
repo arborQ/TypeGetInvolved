@@ -2,24 +2,14 @@ import express from 'express';
 import hashGenerator from 'password-hash';
 
 import { User } from '../../database/models';
-
+import { modelToViewModel, viewModelToModel } from './userViewModelMappings'
 var router = express.Router();
-var api = router.route('/users');
+var api = router.route('/users/:id*?');
 
 api
   .get((req, res) => { 
-    var findUsers = User.find();
-
-    var timeout = new Promise((resolve) => {
-      setTimeout(() => { resolve(null); }, 2000);
-    });
-
-    Promise.race([findUsers, timeout]).then((users) =>{
-      if(!!users){
-        res.send(users.map(u => { return { login: u.login, email: u.email, firstName: u.firstName, lastName: u.lastName, id: u._id } }))
-      }else{
-        res.send({ timeout: 2000 });
-      }
+    var findUsers = User.find().then((users) =>{
+        res.send(users.map(modelToViewModel));
     });
    })
   .post((req, res, next) => {
@@ -32,13 +22,25 @@ api
       passwordHash : hashGenerator.generate('haslo123!')
     });
 
-    console.log(newUser.save((err) => {
-      res.send({ success : !err });
-    }));
+    newUser.save((err) => {
+      res.send(modelToViewModel(newUser));
+    });
   })
+  .put((req, res, next) => { 
+    let  { id } = req.body;
+    console.log(id);
+    User.findOne({ _id : id }).then((user) => {
+      Object.assign(user, viewModelToModel(req.body))
+      user.save(() => {
+          res.send(modelToViewModel(user)); 
+      });
+    }).catch((err) => {
+      res.send({ success : false });
+    });
+   })
   .delete((req, res, next) => {
     let  { _id } = req.body;
-    console.log(_id)
+    
     User.remove({ _id }, (err, bear) => { res.send({ success : true }); });
   });
 

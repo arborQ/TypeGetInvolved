@@ -32,7 +32,7 @@ declare module "react-redux" {
   }
 
   interface MapDispatchToPropsFunction {
-    (dispatch: Dispatch, ownProps?: any): any;
+    (dispatch: Dispatch<any>, ownProps?: any): any;
   }
 
   interface MapDispatchToPropsObject {

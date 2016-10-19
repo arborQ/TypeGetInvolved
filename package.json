@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "run:dev": "babel-node ./bin/www",
+    "run:prod": "babel-node ./bin/www",
+    "run:dev" : "nodemon --exec npm run run:prod",
     "reinstall": "npm i && bower i && tsd reinstall",
     "webpack": "webpack --config config/webpack.dev.js --color",
     "build:dev": "webpack --config config/webpack.dev.js --color --watch",
-    "start:dev": "concurrent \"npm run build:dev\" \"mongod\" \"gulp less-watch\" \"npm run run:dev\""
+    "start:dev": "concurrent \"npm run build:dev\" \"mongod\" \"gulp less-watch\" \"npm run run:dev\"",
+    "start" : "concurrent \"gulp tsconfig-glob\" \"gulp less-watch\" \"npm run build:dev\" \"mongod\" \"npm run run:prod\""
   },
   "dependencies": {
     "@types/es6-promise": "0.0.32",
@@ -51,6 +53,8 @@
     "react-transform-hmr": "^1.0.2",
     "redbox-react": "^1.2.2",
     "redux": "^3.1.5",
+    "redux-promise-middleware": "^4.1.0",
+    "redux-thunk": "^2.1.0",
     "rimraf": "^2.5.2",
     "serve-favicon": "~2.3.0",
     "ts": "0.0.0",

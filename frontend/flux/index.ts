@@ -1,6 +1,8 @@
 import { syncHistoryWithStore, routerReducer, routerMiddleware, push, replace } from 'react-router-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { browserHistory } from 'react-router';
+import thunk from 'redux-thunk';
+import promiseMiddleware from 'redux-promise-middleware';
 
 import CurrentUser from './reducers/authorize/reducer';
 import UsersRepository from './reducers/users/usersReducer';
@@ -20,7 +22,7 @@ const logger = store => next => action => {
   return result;
 };
 
-export var store = createStore<store.IApplicationStore>(reudcers, applyMiddleware(middleware, logger));
+export var store = createStore<store.IApplicationStore>(reudcers, applyMiddleware(middleware, thunk, promiseMiddleware(), logger));
 
 export var navigate = (path: string): void => {
     store.dispatch(replace(path));
