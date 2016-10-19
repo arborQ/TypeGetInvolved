@@ -19,13 +19,15 @@ export default class DisplayMessageComponent extends React.Component<any, { Mess
     public render(): JSX.Element {
         let display = this.displayText();
         if (display.length !== 0) {
-            return ( <Message Text={display} /> );
+            return ( <Message Text={display} ButtonText={this.state.Messages.length.toString()} /> );
         }
-        return <div></div>;
+        return null;
     }
 
     private displayText(): string {
-        console.log('this.state.Messages', this.state.Messages);
+        if (this.state.Messages.length > 1) {
+            return 'New messages';
+        }
         return this.state.Messages.join(', ');
     }
 }

@@ -5,7 +5,7 @@ export default class MessageComponent extends React.Component<ui.message.IProps,
         return (
             <div ref={this.showMessage.bind(this)} className='mdl-js-snackbar mdl-snackbar mdl-snackbar--active'>
                 <div className='mdl-snackbar__text'>{this.props.Text}</div>
-                <button className='mdl-snackbar__action' type='button'>go</button>
+                <button className='mdl-snackbar__action' type='button'>{this.props.ButtonText}</button>
             </div>
         );
     }
